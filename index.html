@@ -154,6 +154,27 @@ body {
             padding: 40px 20px;
             position: relative;
         }
+        /* --- Penyesuaian Khusus Section Wish --- */
+        #wish {
+            height: auto !important; /* Menghapus paksaan tinggi satu layar penuh */
+            min-height: 100vh;       /* Minimal tetap satu layar agar terlihat rapi */
+            padding-top: 80px;       /* Ruang agar teks tidak terlalu mepet ke atas */
+            padding-bottom: 120px;    /* Ruang ekstra di bawah agar tombol SECRET tidak tertutup Navigasi */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #wish .glass-card {
+            height: auto !important; /* Biarkan kartu putih memanjang mengikuti teks puitis kamu */
+            margin: 0 auto;
+        }
+
+        #typing-text {
+            min-height: 100px;       /* Memberi ruang agar teks tidak 'melompat' saat mulai mengetik */
+            margin-bottom: 20px;
+            word-wrap: break-word;   /* Memastikan teks tidak keluar batas layar HP */
+        }
 
         .glass-card {
             background: var(--glass);
@@ -231,6 +252,19 @@ body {
     filter: brightness(1);
     border-radius: 0px; /* Opsional: agar foto memenuhi kotak saat zoom */
 }
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    transition: 0.7s;
+}
+
+.gallery-item:hover::after {
+    left: 125%;
+}
 
         .img-frame {
             width: 100%; height: 400px;
@@ -296,11 +330,13 @@ body {
             .img-frame { height: 250px; }
             nav { width: 90%; justify-content: center; gap: 15px; }
         }
-        .cursor {
+.cursor {
     display: inline-block;
-    width: 2px;
+    width: 2px; /* Mengatur ketebalan garis */
+    height: 1.2em; /* Mengatur tinggi garis agar sejajar teks */
     background-color: #6c1d1d;
     margin-left: 2px;
+    vertical-align: middle;
     animation: blink 0.7s infinite;
 }
 
@@ -336,8 +372,9 @@ body {
 
 /* Saat disentuh, opacity naik sedikit dan garis memanjang */
 #secret-trigger:hover {
-    opacity: 0.8;
-    letter-spacing: 6px;
+    opacity: 1 !important;
+    color: #6c1d1d;
+    text-shadow: 0 0 10px rgba(108, 29, 29, 0.2);
 }
 
 #secret-trigger:hover::after {
@@ -351,6 +388,32 @@ body {
 
 #secret-trigger {
     animation: softBreath 4s infinite ease-in-out;
+}
+/* Efek Getar yang lebih halus */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.shake-animation {
+    display: inline-block; /* Wajib agar transform bekerja */
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    color: #ff4d4d !important; /* Warna merah saat salah */
+    opacity: 1 !important;
+}
+/* Mengubah kursor standar menjadi hati */
+body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="font-size:18px"><text y="18">❤️</text></svg>'), auto;
+}
+
+/* Memastikan kursor berubah kembali menjadi 'tangan/pointer' saat menyentuh tombol agar Dinda tidak bingung */
+    button, 
+    a, 
+    .nav-link, 
+    #secret-trigger,
+    .gallery-item {
+    cursor: pointer;
 }
         
     </style>
@@ -421,13 +484,12 @@ body {
 
         <p id="typing-text" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-style: italic; color: #5a4b3c; line-height: 1.6; min-height: 150px;"></p>
         
-<p id="secret-trigger" style="margin-top: 40px; font-size: 0.7rem; opacity: 0.4; letter-spacing: 3px; cursor: pointer; transition: 0.5s;">S E C R E T</p>
+<div style="margin-top: 40px;">
+    <span id="secret-trigger" style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 5px; cursor: pointer; transition: 0.3s;">S E C R E T</span>
+    <p id="secret-message" style="display: none; margin-top: 20px; font-family: 'Playfair Display', serif; color: #6c1d1d; font-weight: bold; animation: fadeInUp 1s ease;"></p>
+</div>
 
-<p id="final-message" style="margin-top: 20px; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #6c1d1d; opacity: 0; transition: opacity 2s ease; font-weight: 700;">
-    "I will love you forever and always❤️"
-</p>
-    </div>
-</section>
+ </section>
     <nav>
         <a href="#home" class="nav-link active">Home</a>
         <a href="#memories" class="nav-link">Tumbuh</a>
@@ -540,6 +602,32 @@ function startPetals() {
             }
         });
     });
+    // --- TARUH KODE INI DI LUAR FUNGSI APAPUN (DI BAGIAN BAWAH SCRIPT) ---
+
+document.addEventListener('mousemove', function(e) {
+    const spark = document.createElement('div');
+    spark.innerHTML = '❤️';
+    spark.style.position = 'fixed'; // Gunakan fixed agar tetap muncul saat di-scroll
+    spark.style.left = e.clientX + 'px';
+    spark.style.top = e.clientY + 'px';
+    spark.style.fontSize = Math.random() * 10 + 12 + 'px'; 
+    spark.style.pointerEvents = 'none'; 
+    spark.style.zIndex = '100000'; // Pastikan angka ini paling tinggi
+    spark.style.opacity = '0.8';
+    spark.style.transition = 'all 0.8s ease';
+    
+    document.body.appendChild(spark);
+
+    // Animasi langsung jalan tanpa menunggu password
+    setTimeout(() => {
+        spark.style.transform = `translateY(-60px) scale(0.5) rotate(${Math.random() * 360}deg)`;
+        spark.style.opacity = '0';
+    }, 50);
+
+    setTimeout(() => {
+        spark.remove();
+    }, 800);
+});
     // Fungsi untuk memicu animasi saat elemen muncul di layar
 const observerOptions = {
     threshold: 0.2 // Animasi jalan jika 20% kartu sudah terlihat
@@ -554,6 +642,7 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.classList.remove('is-visible'); 
         }
     });
+    
 }, observerOptions);
 
 // Daftarkan semua glass-card ke observer
@@ -581,7 +670,7 @@ main.addEventListener('scroll', () => {
 });
 // --- KONFIGURASI ---
 const birthDate = new Date('2005-03-22'); // SESUAIKAN TAHUN LAHIR DINDA DI SINI (YYYY-MM-DD)
-const message = "Selamat menginjak usia dua puluh satu Dinda. Ini adalah bab di mana kamu bukan lagi sekadar mencari jati diri, melainkan mulai menciptakannya. Semoga setiap langkahmu membawa harmoni, dan setiap lelahmu selalu menemukan ruang teduh untuk berpulang. Teruslah tumbuh dengan caramu sendiri, dan semoga setiap lelahmu selalu berujung pada bahagia yang bermakna";
+const message = "Selamat menginjak usia dua puluh satu, Dinda. Aku tahu, di usia ini hidup belum rapi—dan memang tak seharusnya. Kamu mungkin masih ragu, masih salah langkah, masih bertanya ke diri sendiri lebih sering daripada menemukan jawaban. Tapi justru di situlah kamu sedang benar-benar tumbuh. Kamu tidak lagi hanya mencari siapa dirimu, kamu sedang membentuknya—dengan pilihan-pilihan kecil, dengan keberanian mencoba, dengan jatuh yang kadang kamu simpan sendiri. Aku berharap, setiap langkahmu tetap punya arah, meski harus melewati kebingungan lebih dulu. Dan semoga, setiap lelahmu selalu punya tempat untuk pulang dan bernapas. Di usia ini, kamu bukan karakter sampingan dalam hidupmu sendiri. Kamu penulisnya—yang kadang salah memilih kata, mencoret kalimat, lalu menulis ulang. Tidak apa-apa. Cerita yang jujur memang jarang rapi sejak awal. Semoga halaman-halaman berikutnya diisi tawa yang lahir dari syukur, mimpi yang perlahan berani kamu kejar, dan bahagia yang tidak selalu sempurna, tapi sungguh kamu rasakan. Teruslah berjalan dengan caramu sendiri. Kalau lelah, berhenti sejenak—bukan untuk menyerah, tapi untuk ingat bahwa kamu sedang menuju sesuatu yang berarti.";
 
 let hasStarted = false;
 
@@ -592,13 +681,13 @@ function calculateDays() {
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 }
 
-// Fungsi Typing Effect
 function typeWriter(text, i, fnCallback) {
     if (i < text.length) {
-        document.getElementById("typing-text").innerHTML = text.substring(0, i + 1) + '<span aria-hidden="true" class="cursor">|</span>';
+        // Hapus karakter | di sini, cukup biarkan span cursor yang bekerja
+        document.getElementById("typing-text").innerHTML = text.substring(0, i + 1) + '<span aria-hidden="true" class="cursor"></span>';
         setTimeout(function() {
             typeWriter(text, i + 1, fnCallback)
-        }, 50); // Kecepatan ngetik (ms)
+        }, 50); 
     } else if (typeof fnCallback == 'function') {
         setTimeout(fnCallback, 700);
     }
@@ -637,39 +726,58 @@ wishObserver.observe(document.getElementById('wish'));
 
  
  
-// Gunakan sistem tahap (step) agar tidak error karena spasi teks
-let secretStep = 0;
-
+ 
+// --- LOGIKA PASSWORD RAHASIA ---
 const secretBtn = document.getElementById('secret-trigger');
+const secretMsgContainer = document.getElementById('secret-message');
 const finalMsg = document.getElementById('final-message');
 
 secretBtn.addEventListener('click', function() {
-    if (secretStep === 0) {
-        // TAHAP 1: Berubah jadi TOP SECRET
+    // 1. Munculkan Prompt (Minta Password)
+    const passwordInput = prompt("Tanyakan Password Pada Pembuat yaa:");
+
+    // 2. Cek Password (Pastikan dinda mengetik 22MaretDinda atau 22maretdinda tetap bisa)
+    if (passwordInput && passwordInput.toLowerCase() === "bunga gerbera") { 
+        
+        // HANYA JIKA BENAR: Hilangkan tombol SECRET secara perlahan
         this.style.opacity = '0';
         
         setTimeout(() => {
-            this.innerText = "T O P  S E C R E T";
-            this.style.opacity = '0.7';
-            this.style.color = '#6c1d1d';
-            this.style.letterSpacing = '5px';
-            secretStep = 1; // Tandai sudah masuk tahap 1
+            this.style.display = 'none'; // Baru benar-benar dihapus setelah transisi selesai
+            
+            // Munculkan Pesan Rahasia 1
+            secretMsgContainer.innerHTML = "I Will Love You Forever And Ever ❤️"; 
+            secretMsgContainer.style.display = "block";
+            
+            // Munculkan Kalimat Final (I will love you...)
+            setTimeout(() => {
+                finalMsg.style.opacity = '1';
+            }, 800);
+            
+            alert("Akses diterima. Selamat ulang tahun, Dinda!");
         }, 500);
 
-    } else if (secretStep === 1) {
-        // TAHAP 2: Munculkan pesan cinta
-        this.style.opacity = '0';
-        this.style.pointerEvents = 'none'; // Matikan klik agar tidak klik berkali-kali
-        
-        setTimeout(() => {
-            // Hilangkan tulisan TOP SECRET total agar rapi
-            this.style.display = 'none'; 
-            // Munculkan kalimat "I will love you..."
-            finalMsg.style.opacity = '1';
-        }, 500);
-    }
+    } else if (passwordInput === null) {
+        // Jika Dinda menekan tombol 'Cancel', jangan lakukan apapun (tombol tetap ada)
+        console.log("Input dibatalkan");
+} else {
+    // JIKA SALAH:
+    // 1. Hapus class jika sebelumnya sudah ada (reset)
+    this.classList.remove('shake-animation');
+    
+    // 2. Trik 'Magic' untuk me-restart animasi CSS
+    void this.offsetWidth; 
+    
+    // 3. Tambahkan kembali class-nya
+    this.classList.add('shake-animation');
+    
+    // Munculkan peringatan setelah getaran mulai
+    setTimeout(() => {
+        alert("Yahh, passwordnya salah. Coba tanya lagi ya!");
+    }, 100);
+}
+
 });
-
 </script>
 
 </body>
