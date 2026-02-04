@@ -415,6 +415,79 @@ body {
     .gallery-item {
     cursor: pointer;
 }
+/* Container Utama */
+.chat-container-card {
+    position: relative;
+    padding: 0 !important;
+    overflow: hidden;
+    height: 600px; /* Tinggi kotak putih utama */
+    display: block !important;
+    border: none !important;
+}
+
+.chat-bg-img {
+    width: 100%;
+    height: 100%;
+}
+
+.chat-bg-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Kolom Percakapan Putih & Ramping */
+.chat-overlay-white {
+    position: absolute;
+    bottom: 20px; /* Jarak dari bawah agar tidak terlalu mepet */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* Lebar kolom percakapan */
+    background: white; /* Warna putih solid */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.chat-box-compact {
+    padding: 25px 35px;
+    position: relative;
+}
+
+.chat-role {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #6c1d1d;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.chat-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.click-indicator {
+    position: absolute;
+    bottom: 8px;
+    right: 20px;
+    font-size: 0.55rem;
+    color: #999;
+    font-style: italic;
+}
+
+/* Responsif HP */
+@media (max-width: 768px) {
+    .chat-container-card { height: 500px; }
+    .chat-overlay-white { width: 95%; bottom: 10px; }
+    .chat-text { font-size: 0.95rem; }
+}
         
     </style>
 </head>
@@ -446,17 +519,23 @@ body {
         </div>
     </section>
 
-    <section id="memories">
-        <div class="glass-card">
-            <div class="img-frame">
-                <img src="img/foto2.png" alt="Memories" onerror="this.src='https://via.placeholder.com/400?text=Foto+2'">
-            </div>
-            <div class="text-area">
-                <h2>Tumbuh.</h2>
-                <p>Tumbuhmu seperti alur cerita yang tak terduga. Ada bagian yang sulit, ada bagian yang haru, namun kamu selalu menemukan cara untuk menjadi lebih indah.</p>
+<section id="memories">
+    <div class="glass-card chat-container-card">
+        <div class="chat-bg-img">
+            <img src="img/foto-masakecil.png" alt="Dinda Memories">
+        </div>
+
+        <div class="chat-overlay-white" onclick="nextDialogue()">
+            <div class="chat-box-compact">
+                <div id="chat-content" style="transition: all 0.4s ease;">
+                    <span class="chat-role" id="role-name">Dinda Kecil</span>
+                    <p class="chat-text" id="dialogue-text">"Kak, apakah dunia dewasa semenakutkan yang aku bayangkan?"</p>
+                </div>
+                <div class="click-indicator">Klik untuk lanjut...</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="gallery">
         <div class="glass-card" style="grid-template-columns: 1fr;">
@@ -475,7 +554,7 @@ body {
     </section>
 
 <section id="wish">
-    <div class="glass-card" style="grid-template-columns: 1fr; text-align: center;">
+    <div class="glass-card" style="grid-template-columns: 1fr; text-align: center; position: relative; z-index: 10;">
         <div id="day-counter-wrapper" style="margin-bottom: 20px;">
             <h3 style="font-size: 1rem; opacity: 0.7; font-weight: 400;">Tepat hari ini,</h3>
             <div id="day-number" style="font-size: 3.5rem; font-weight: 700; color: #6c1d1d; font-family: 'Playfair Display', serif;">0</div>
@@ -484,12 +563,26 @@ body {
 
         <p id="typing-text" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-style: italic; color: #5a4b3c; line-height: 1.6; min-height: 150px;"></p>
         
-<div style="margin-top: 40px;">
-    <span id="secret-trigger" style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 5px; cursor: pointer; transition: 0.3s;">S E C R E T</span>
-    <p id="secret-message" style="display: none; margin-top: 20px; font-family: 'Playfair Display', serif; color: #6c1d1d; font-weight: bold; animation: fadeInUp 1s ease;"></p>
-</div>
-
- </section>
+        <div style="margin-top: 40px; border-top: 1px dashed rgba(108, 29, 29, 0.1); padding-top: 30px;">
+            <span id="secret-trigger">S E C R E T</span>
+            <p id="secret-message" style="display: none; margin-top: 20px; font-family: 'Playfair Display', serif; color: #6c1d1d; font-weight: bold;"></p>
+            
+            <div style="margin-top: 30px;">
+                <button id="write-wish-btn" class="btn" style="font-size: 0.8rem; padding: 10px 25px;">Tulis Harapanmu</button>
+                
+                <div id="wish-input-container" style="display: none; margin-top: 20px; animation: fadeInUp 0.8s ease;">
+                    <form id="my-form">
+                        <textarea name="Harapan_Dinda" id="dinda-wish-input" placeholder="Tulis harapanmu di sini..." 
+                            style="width: 85%; max-width: 400px; height: 100px; padding: 15px; border-radius: 20px; border: 1px solid #6c1d1d; background: rgba(255,255,255,0.9); font-family: 'Plus Jakarta Sans', sans-serif; outline: none; resize: none;"></textarea>
+                        <br>
+                        <button type="submit" id="save-wish-btn" class="btn" style="margin-top: 15px; font-size: 0.75rem;">Simpan di Hati</button>
+                    </form>
+                </div>
+                <p id="display-dinda-wish" style="margin-top: 25px; font-family: 'Playfair Display', serif; font-style: italic; color: #6c1d1d; font-size: 1.2rem; display: none; line-height: 1.6;"></p>
+            </div>
+        </div>
+    </div>
+</section>
     <nav>
         <a href="#home" class="nav-link active">Home</a>
         <a href="#memories" class="nav-link">Tumbuh</a>
@@ -670,7 +763,7 @@ main.addEventListener('scroll', () => {
 });
 // --- KONFIGURASI ---
 const birthDate = new Date('2005-03-22'); // SESUAIKAN TAHUN LAHIR DINDA DI SINI (YYYY-MM-DD)
-const message = "Selamat menginjak usia dua puluh satu, Dinda. Aku tahu, di usia ini hidup belum rapi—dan memang tak seharusnya. Kamu mungkin masih ragu, masih salah langkah, masih bertanya ke diri sendiri lebih sering daripada menemukan jawaban. Tapi justru di situlah kamu sedang benar-benar tumbuh. Kamu tidak lagi hanya mencari siapa dirimu, kamu sedang membentuknya—dengan pilihan-pilihan kecil, dengan keberanian mencoba, dengan jatuh yang kadang kamu simpan sendiri. Aku berharap, setiap langkahmu tetap punya arah, meski harus melewati kebingungan lebih dulu. Dan semoga, setiap lelahmu selalu punya tempat untuk pulang dan bernapas. Di usia ini, kamu bukan karakter sampingan dalam hidupmu sendiri. Kamu penulisnya—yang kadang salah memilih kata, mencoret kalimat, lalu menulis ulang. Tidak apa-apa. Cerita yang jujur memang jarang rapi sejak awal. Semoga halaman-halaman berikutnya diisi tawa yang lahir dari syukur, mimpi yang perlahan berani kamu kejar, dan bahagia yang tidak selalu sempurna, tapi sungguh kamu rasakan. Teruslah berjalan dengan caramu sendiri. Kalau lelah, berhenti sejenak—bukan untuk menyerah, tapi untuk ingat bahwa kamu sedang menuju sesuatu yang berarti.";
+const message = "Selamat menginjak usia dua puluh satu, Dinda. Aku tahu, di usia ini hidup belum rapi—dan memang belum seharusnya. Kamu mungkin masih ragu, masih salah langkah, masih bertanya ke diri sendiri lebih sering daripada menemukan jawaban. Tapi justru di situlah kamu sedang benar-benar tumbuh. Kamu tidak lagi hanya mencari siapa dirimu, kamu sedang membentuknya, dengan pilihan-pilihan kecil, dengan keberanian mencoba, dengan jatuh yang kadang kamu simpan sendiri. Aku berharap, setiap langkahmu tetap punya arah, meski harus melewati kebingungan lebih dulu, dan semoga setiap lelahmu selalu punya tempat untuk pulang. Di usia ini, kamu bukan karakter sampingan dalam hidupmu sendiri. Kamu penulisnya yang terkadang salah memilih kata, mencoret kalimat, lalu menulis ulang. Tidak apa-apa, cerita yang jujur memang jarang rapi sejak awal. Semoga halaman-halaman berikutnya diisi tawa yang lahir dari syukur, mimpi yang perlahan berani kamu kejar, dan bahagia yang tidak selalu sempurna, tapi sungguh kamu rasakan. Teruslah berjalan dengan caramu sendiri, kalau lelah, berhenti sejenak bukan untuk menyerah, tapi untuk ingat bahwa kamu sedang menuju sesuatu yang berarti.";
 
 let hasStarted = false;
 
@@ -737,7 +830,7 @@ secretBtn.addEventListener('click', function() {
     const passwordInput = prompt("Tanyakan Password Pada Pembuat yaa:");
 
     // 2. Cek Password (Pastikan dinda mengetik 22MaretDinda atau 22maretdinda tetap bisa)
-    if (passwordInput && passwordInput.toLowerCase() === "bunga gerbera") { 
+    if (passwordInput && passwordInput.toLowerCase() === "3tangkaigerbera") { 
         
         // HANYA JIKA BENAR: Hilangkan tombol SECRET secara perlahan
         this.style.opacity = '0';
@@ -754,7 +847,7 @@ secretBtn.addEventListener('click', function() {
                 finalMsg.style.opacity = '1';
             }, 800);
             
-            alert("Akses diterima. Selamat ulang tahun, Dinda!");
+            alert("Yay! Passwordnya benar. Semoga harimu menyenangkan yaa!");
         }, 500);
 
     } else if (passwordInput === null) {
@@ -778,7 +871,99 @@ secretBtn.addEventListener('click', function() {
 }
 
 });
+// --- LOGIKA FORMSPREE & WISH ---
+const form = document.getElementById("my-form");
+const writeWishBtn = document.getElementById('write-wish-btn');
+const wishInputContainer = document.getElementById('wish-input-container');
+const displayDindaWish = document.getElementById('display-dinda-wish');
+
+if(writeWishBtn) {
+    writeWishBtn.addEventListener('click', function() {
+        wishInputContainer.style.display = 'block';
+        this.style.display = 'none';
+        // Scroll otomatis ke bawah agar input terlihat
+        wishInputContainer.scrollIntoView({ behavior: 'smooth' });
+    });
+}
+
+if(form) {
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault();
+        
+        const wishValue = document.getElementById('dinda-wish-input').value;
+        const saveBtn = document.getElementById('save-wish-btn');
+
+        if (wishValue.trim() === "") {
+            alert("Tuliskan sesuatu dulu yaa..");
+            return;
+        }
+
+        // GANTI INI: Pakai ID dari Formspree kamu
+        const endpoint = "https://formspree.io/f/mnjvojev"; 
+
+        saveBtn.innerText = "Mengirim...";
+        saveBtn.disabled = true;
+
+        const data = new FormData(event.target);
+
+        fetch(endpoint, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                wishInputContainer.style.display = 'none';
+                displayDindaWish.innerHTML = `“${wishValue}”<br><span style="font-size: 0.8rem; font-style: normal; opacity: 0.6; display: block; margin-top: 10px;">— Harapanmu telah tersimpan di semesta.</span>`;
+                displayDindaWish.style.display = 'block';
+                alert("Harapanmu sudah tersimpan dengan aman, Dinda.");
+            } else {
+                alert("Maaf, gagal mengirim. Coba lagi nanti.");
+                saveBtn.innerText = "Simpan di Hati";
+                saveBtn.disabled = false;
+            }
+        }).catch(() => {
+            alert("Koneksi bermasalah.");
+            saveBtn.innerText = "Simpan di Hati";
+            saveBtn.disabled = false;
+        });
+    });
+}
+const dialogues = [
+    { role: "Dinda Mungil", text: '"Kak, apakah dunia dewasa semenakutkan yang aku bayangkan?"' },
+    { role: "Dinda ", text: '"Kadang-kadang. Tapi jangan takut, kita punya banyak keberanian yang belum kamu tahu sekarang."' },
+    { role: "Dinda Mungil", text: '"Apakah kita masih suka melihat bintang dan bermimpi yang tinggi?"' },
+    { role: "Dinda ", text: '"Tentu. Hanya saja sekarang, kita bukan cuma melihatnya, kita sedang belajar cara menjangkaunya satu per satu."' },
+    { role: "Dinda Mungil", text: '"Aku bangga padamu, Kak. Terima kasih sudah tidak menyerah."' },
+    { role: "Dinda ", text: '"Terima kasih sudah tumbuh sehebat ini, Dinda kecilku."' }
+];
+
+let currentIdx = 0;
+
+function nextDialogue() {
+    const content = document.getElementById('chat-content');
+    const roleName = document.getElementById('role-name');
+    const dialogueText = document.getElementById('dialogue-text');
+
+    currentIdx++;
+    
+    // Jika percakapan selesai, kembali ke awal
+    if (currentIdx >= dialogues.length) {
+        currentIdx = 0;
+    }
+
+    // Efek transisi halus
+    content.style.opacity = "0";
+    content.style.transform = "translateY(5px)";
+
+    setTimeout(() => {
+        roleName.innerText = dialogues[currentIdx].role;
+        dialogueText.innerText = dialogues[currentIdx].text;
+        content.style.opacity = "1";
+        content.style.transform = "translateY(0)";
+    }, 300);
+}
 </script>
 
 </body>
 </html>
+    <style>
