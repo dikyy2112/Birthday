@@ -1,969 +1,1059 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>22 Maret 'Dinda'</title>
-    <link rel="icon" href="img/download.jpg" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/download.jpg" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Playfair+Display:italic,wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
-        /* --- Latar Belakang Baru --- */
-body {
-    background: #fdfaf7;
-    /* Memberi tekstur warna yang lebih dalam */
-    background: radial-gradient(circle at center, #fdfaf7 0%, #faeede 100%);
-    color: var(--text);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    overflow: hidden;
-    position: relative;
-}
+      /* --- Latar Belakang Baru --- */
+      body {
+        background: #fdfaf7;
+        background: radial-gradient(circle at center, #fdfaf7 0%, #faeede 100%);
+        color: var(--text);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        overflow: hidden;
+        position: relative;
+      }
 
-/* Dekorasi elemen mengambang (Floating Decor) */
-.bg-decor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-    overflow: hidden;
-}
+      .bg-decor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+      }
 
-.item-decor {
-    position: absolute;
-    opacity: 0.15; /* Transparan agar tidak mengganggu teks */
-    filter: sepia(0.3); /* Memberikan kesan vintage/warm */
-    animation: float 6s ease-in-out infinite;
-}
+      .item-decor {
+        position: absolute;
+        opacity: 0.15;
+        filter: sepia(0.3);
+        animation: float 6s ease-in-out infinite;
+      }
 
-/* Animasi mengambang */
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(10deg); }
-}
-
-/* Mengatur posisi masing-masing boneka dan bunga */
-.item-decor:nth-child(1) { top: 10%; left: 5%; font-size: 80px; animation-delay: 0s; }
-.item-decor:nth-child(2) { top: 70%; left: 10%; font-size: 100px; animation-delay: 1s; }
-.item-decor:nth-child(3) { top: 20%; right: 10%; font-size: 90px; animation-delay: 2s; }
-.item-decor:nth-child(4) { top: 80%; right: 5%; font-size: 70px; animation-delay: 1.5s; }
-.item-decor:nth-child(5) { top: 40%; left: 40%; font-size: 50px; opacity: 0.08; }
-.item-decor:nth-child(6) { top: 50%; right: 30%; font-size: 60px; opacity: 0.08; }
-
-/* Membuat glass card lebih kontras agar teks tetap tajam */
-.glass-card {
-    background: rgba(255, 255, 255, 0.8) !important;
-    border: 1px solid rgba(255, 255, 255, 1);
-}
-        /* --- Intro Section --- */
-        .intro-page {
-            position: fixed; 
-            inset: 0;
-            background: #fdfaf7; /* Samakan dengan warna bg utama */
-            z-index: 1000;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            /* Transisi geser ke atas */
-            transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1); 
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
         }
-        
-
-        .intro-container {
-            border: 1px solid rgba(108, 29, 29, 0.1);
-            padding: 60px 40px;
-            border-radius: 40px;
-            text-align: center;
-            position: relative;
-            background: white;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.02);
+        50% {
+          transform: translateY(-20px) rotate(10deg);
         }
-        .intro-page.hidden { 
-            transform: translateY(-100%); 
+      }
+
+      .item-decor:nth-child(1) {
+        top: 10%;
+        left: 5%;
+        font-size: 80px;
+        animation-delay: 0s;
+      }
+      .item-decor:nth-child(2) {
+        top: 70%;
+        left: 10%;
+        font-size: 100px;
+        animation-delay: 1s;
+      }
+      .item-decor:nth-child(3) {
+        top: 20%;
+        right: 10%;
+        font-size: 90px;
+        animation-delay: 2s;
+      }
+      .item-decor:nth-child(4) {
+        top: 80%;
+        right: 5%;
+        font-size: 70px;
+        animation-delay: 1.5s;
+      }
+      .item-decor:nth-child(5) {
+        top: 40%;
+        left: 40%;
+        font-size: 50px;
+        opacity: 0.08;
+      }
+      .item-decor:nth-child(6) {
+        top: 50%;
+        right: 30%;
+        font-size: 60px;
+        opacity: 0.08;
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8) !important;
+        border: 1px solid rgba(255, 255, 255, 1);
+      }
+      /* --- Intro Section --- */
+      .intro-page {
+        position: fixed;
+        inset: 0;
+        background: #fdfaf7;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+      }
+
+      .intro-container {
+        border: 1px solid rgba(108, 29, 29, 0.1);
+        padding: 60px 40px;
+        border-radius: 40px;
+        text-align: center;
+        position: relative;
+        background: white;
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.02);
+      }
+      .intro-page.hidden {
+        transform: translateY(-100%);
+      }
+
+      .intro-img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 20px;
+        margin-bottom: 25px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        border: 4px solid white;
+        animation: fadeInUp 1.5s ease forwards;
+      }
+
+      .intro-content h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        font-weight: 400;
+        margin-bottom: 10px;
+      }
+
+      .btn {
+        background-color: #6c1d1d !important;
+        color: #ffffff !important;
+        padding: 14px 35px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 600;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        letter-spacing: 1px;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 20px rgba(108, 29, 29, 0.3);
+        position: relative;
+        z-index: 10;
+      }
+
+      .btn:hover {
+        transform: scale(1.15);
+        background: #8b2a2a;
+        box-shadow: 0 15px 30px rgba(108, 29, 29, 0.3);
+      }
+
+      #open-btn {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(108, 29, 29, 0.4);
         }
-
-        .intro-img {
-            width: 180px; height: 180px;
-            object-fit: cover; border-radius: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 4px solid white;
-            animation: fadeInUp 1.5s ease forwards;
+        70% {
+          box-shadow: 0 0 0 15px rgba(108, 29, 29, 0);
         }
-
-        .intro-content h2 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 3rem; font-weight: 400; margin-bottom: 10px; 
+        100% {
+          box-shadow: 0 0 0 0 rgba(108, 29, 29, 0);
         }
+      }
 
-        /* --- Button Style --- */
-/* --- Perbaikan Button Style --- */
-        .btn {
-            background-color: #6c1d1d !important; /* Memaksa warna maroon keluar */
-            color: #ffffff !important;           /* Memaksa teks jadi putih */
-            padding: 14px 35px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            display: inline-block;
-            text-align: center;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 20px rgba(108, 29, 29, 0.3);
-            position: relative;
-            z-index: 10; /* Pastikan di atas dekorasi */
-        }
-
-        .btn:hover {
-            transform: scale(1.15);
-            background: #8b2a2a;
-            box-shadow: 0 15px 30px rgba(108, 29, 29, 0.3);
-        }
-
-        #open-btn { animation: pulse 2s infinite; }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(108, 29, 29, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(108, 29, 29, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(108, 29, 29, 0); }
-        }
-
-    .main-content {
+      .main-content {
         height: 100vh;
         overflow-y: auto;
         scroll-snap-type: y mandatory;
-        scroll-behavior: smooth; /* Tambahkan ini agar klik nav jadi smooth */
+        scroll-behavior: smooth;
         opacity: 0;
         transition: opacity 1s ease-in;
         display: block !important;
-        
-        }        
-        .main-content.visible {
-            opacity: 1; /* Tampilkan saat sudah siap */
-        }
+      }
+      .main-content.visible {
+        opacity: 1;
+      }
 
-        section {
-            height: 100vh;
-            scroll-snap-align: start;
-            display: flex; align-items: center; justify-content: center;
-            padding: 40px 20px;
-            position: relative;
-        }
-        /* --- Penyesuaian Khusus Section Wish --- */
-        #wish {
-            height: auto !important; /* Menghapus paksaan tinggi satu layar penuh */
-            min-height: 100vh;       /* Minimal tetap satu layar agar terlihat rapi */
-            padding-top: 80px;       /* Ruang agar teks tidak terlalu mepet ke atas */
-            padding-bottom: 120px;    /* Ruang ekstra di bawah agar tombol SECRET tidak tertutup Navigasi */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+      section {
+        height: 100vh;
+        scroll-snap-align: start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        position: relative;
+      }
+      #wish {
+        height: auto !important;
+        min-height: 100vh;
+        padding-top: 80px;
+        padding-bottom: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
 
-        #wish .glass-card {
-            height: auto !important; /* Biarkan kartu putih memanjang mengikuti teks puitis kamu */
-            margin: 0 auto;
-        }
+      #wish .glass-card {
+        height: auto !important;
+        margin: 0 auto;
+      }
 
-        #typing-text {
-            min-height: 100px;       /* Memberi ruang agar teks tidak 'melompat' saat mulai mengetik */
-            margin-bottom: 20px;
-            word-wrap: break-word;   /* Memastikan teks tidak keluar batas layar HP */
-        }
+      #typing-text {
+        min-height: 100px;
+        margin-bottom: 20px;
+        word-wrap: break-word;
+      }
 
+      .glass-card {
+        background: var(--glass);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 30px;
+        padding: 40px;
+        max-width: 900px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+        transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      .glass-card.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 180px);
+        gap: 15px;
+        width: 100%;
+        perspective: 1000px;
+      }
+
+      .gallery-item {
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
+        background: rgba(0, 0, 0, 0.03);
+        transition: all 0.5s ease;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-row: span 2;
+      }
+      .gallery-item:nth-child(4) {
+        grid-column: span 2;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform: scale(0.85) rotateX(15deg) rotateY(-15deg) rotateZ(3deg);
+        filter: brightness(0.9);
+        border-radius: 10px;
+      }
+
+      .gallery-item:hover {
+        box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        filter: brightness(1);
+        border-radius: 0px;
+      }
+      .gallery-item::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.3) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: skewX(-25deg);
+        transition: 0.7s;
+      }
+
+      .gallery-item:hover::after {
+        left: 125%;
+      }
+
+      .img-frame {
+        width: 100%;
+        height: 400px;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .img-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+      }
+
+      .img-frame:hover img {
+        transform: scale(1.1);
+      }
+
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+      p {
+        line-height: 1.8;
+        color: #5a4b3c;
+      }
+
+      nav {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 10px 25px;
+        border-radius: 50px;
+        display: flex;
+        gap: 20px;
+        z-index: 900;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      }
+      nav a {
+        text-decoration: none;
+        color: #5a4b3c;
+        font-size: 0.75rem;
+        opacity: 0.4;
+        transition: 0.3s;
+      }
+      nav a.active {
+        opacity: 1;
+        color: #6c1d1d;
+        font-weight: 600;
+      }
+
+      .petal {
+        position: fixed;
+        top: -20px;
+        background: linear-gradient(to bottom right, #ffb6c1, #ffc0cb);
+        border-radius: 150% 0 150% 0;
+        pointer-events: none;
+        z-index: 9999;
+        will-change: transform;
+        animation: fallDown linear forwards;
+      }
+
+      @keyframes fallDown {
+        0% {
+          transform: translateY(0) translateX(0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.8;
+        }
+        25% {
+          transform: translateY(25vh) translateX(20px) rotate(45deg);
+        }
+        50% {
+          transform: translateY(50vh) translateX(-20px) rotate(90deg);
+        }
+        75% {
+          transform: translateY(75vh) translateX(20px) rotate(135deg);
+        }
+        100% {
+          transform: translateY(110vh) translateX(-10px) rotate(180deg);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
         .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 30px;
-            padding: 40px;
-            max-width: 900px; width: 100%;
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 40px;
-            align-items: center;
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+          grid-template-columns: 1fr;
+          padding: 25px;
         }
-        /* Keadaan awal kartu (tersembunyi & sedikit di bawah) */
-.glass-card {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Keadaan saat kartu aktif (muncul) */
-.glass-card.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-        /* --- GALLERY GRID SYSTEM --- */
-/* --- GALLERY GRID SYSTEM (Susunan Tetap Sama) --- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 180px);
-    gap: 15px;
-    width: 100%;
-    /* Penting untuk efek 3D */
-    perspective: 1000px; 
-}
-
-.gallery-item {
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: inset 5px 5px 15px rgba(0,0,0,0.15); /* Efek menjorok ke dalam */
-    background: rgba(0,0,0,0.03);
-    transition: all 0.5s ease;
-}
-
-/* Mempertahankan susunan gambar kamu yang lama */
-.gallery-item:nth-child(1) { grid-row: span 2; } 
-.gallery-item:nth-child(4) { grid-column: span 2; }
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    
-    /* EFEK MIRING AWAL */
-    transform: scale(0.85) rotateX(15deg) rotateY(-15deg) rotateZ(3deg);
-    filter: brightness(0.9);
-    border-radius: 10px;
-}
-
-/* --- EFEK HOVER (Kursor di atas gambar) --- */
-.gallery-item:hover {
-    box-shadow: inset 0 0 0 rgba(0,0,0,0); /* Hilangkan efek menjorok saat normal */
-}
-
-.gallery-item:hover img {
-    /* KEMBALI NORMAL & ZOOM */
-    transform: scale(1.1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    filter: brightness(1);
-    border-radius: 0px; /* Opsional: agar foto memenuhi kotak saat zoom */
-}
-.gallery-item::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 50%; height: 100%;
-    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
-    transform: skewX(-25deg);
-    transition: 0.7s;
-}
-
-.gallery-item:hover::after {
-    left: 125%;
-}
-
+        .gallery-grid {
+          grid-template-rows: repeat(3, 120px);
+        }
         .img-frame {
-            width: 100%; height: 400px;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
+          height: 250px;
         }
-
-        .img-frame img { 
-            width: 100%; height: 100%; object-fit: cover; 
-            transition: transform 0.8s ease;
-        }
-
-        .img-frame:hover img { transform: scale(1.1); }
-
-        h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 15px; }
-        p { line-height: 1.8; color: #5a4b3c; }
-
-        /* --- Navigation --- */
         nav {
-            position: fixed; bottom: 30px; left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(10px);
-            padding: 10px 25px; border-radius: 50px;
-            display: flex; gap: 20px; z-index: 900;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+          width: 90%;
+          justify-content: center;
+          gap: 15px;
         }
-        nav a { text-decoration: none; color: var(--text); font-size: 0.75rem; opacity: 0.4; transition: 0.3s; }
-        nav a.active { opacity: 1; color: var(--accent); font-weight: 600; }
+      }
+      .cursor {
+        display: inline-block;
+        width: 2px;
+        height: 1.2em;
+        background-color: #6c1d1d;
+        margin-left: 2px;
+        vertical-align: middle;
+        animation: blink 0.7s infinite;
+      }
 
-/* --- Flower Petals (Optimasi Performa) --- */
-.petal {
-    position: fixed;
-    top: -20px;
-    background: linear-gradient(to bottom right, #ffb6c1, #ffc0cb);
-    border-radius: 150% 0 150% 0;
-    pointer-events: none;
-    z-index: 9999;
-    will-change: transform; /* Memberitahu browser untuk optimasi hardware */
-    animation: fallDown linear forwards;
-}
-
-@keyframes fallDown {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% { opacity: 0.8; }
-    /* Efek ayunan ke kiri dan kanan saat jatuh */
-    25% { transform: translateY(25vh) translateX(20px) rotate(45deg); }
-    50% { transform: translateY(50vh) translateX(-20px) rotate(90deg); }
-    75% { transform: translateY(75vh) translateX(20px) rotate(135deg); }
-    100% {
-        transform: translateY(110vh) translateX(-10px) rotate(180deg);
-        opacity: 0;
-    }
-}
-
-        @media (max-width: 768px) {
-            .glass-card { grid-template-columns: 1fr; padding: 25px; }
-            .gallery-grid { grid-template-rows: repeat(3, 120px); }
-            .img-frame { height: 250px; }
-            nav { width: 90%; justify-content: center; gap: 15px; }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
         }
-.cursor {
-    display: inline-block;
-    width: 2px; /* Mengatur ketebalan garis */
-    height: 1.2em; /* Mengatur tinggi garis agar sejajar teks */
-    background-color: #6c1d1d;
-    margin-left: 2px;
-    vertical-align: middle;
-    animation: blink 0.7s infinite;
-}
+        50% {
+          opacity: 0;
+        }
+      }
+      #secret-trigger {
+        margin-top: 50px;
+        display: inline-block;
+        font-size: 0.65rem;
+        color: #5a4b3c;
+        opacity: 0.3;
+        letter-spacing: 4px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.8s ease;
+        font-weight: 300;
+        animation: softBreath 4s infinite ease-in-out;
+      }
 
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-#secret-trigger {
-    margin-top: 50px;
-    display: inline-block;
-    font-size: 0.65rem; /* Lebih kecil agar tidak mengganggu */
-    color: #5a4b3c;
-    opacity: 0.3; /* Sangat samar di awal */
-    letter-spacing: 4px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.8s ease;
-    font-weight: 300;
-}
+      #secret-trigger::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -5px;
+        left: 50%;
+        background: #6c1d1d;
+        transition: all 0.5s ease;
+        transform: translateX(-50%);
+      }
 
-/* Garis bawah tipis yang elegan */
-#secret-trigger::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: -5px;
-    left: 50%;
-    background: #6c1d1d;
-    transition: all 0.5s ease;
-    transform: translateX(-50%);
-}
+      #secret-trigger:hover {
+        opacity: 1 !important;
+        color: #6c1d1d;
+        text-shadow: 0 0 10px rgba(108, 29, 29, 0.2);
+      }
+      #secret-trigger:hover::after {
+        width: 40%;
+      }
 
-/* Saat disentuh, opacity naik sedikit dan garis memanjang */
-#secret-trigger:hover {
-    opacity: 1 !important;
-    color: #6c1d1d;
-    text-shadow: 0 0 10px rgba(108, 29, 29, 0.2);
-}
+      @keyframes softBreath {
+        0% {
+          opacity: 0.2;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(1.02);
+        }
+        100% {
+          opacity: 0.2;
+          transform: scale(1);
+        }
+      }
 
-#secret-trigger:hover::after {
-    width: 40%; /* Garis muncul secukupnya, tidak penuh */
-}
-@keyframes softBreath {
-    0% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(1.02); }
-    100% { opacity: 0.2; transform: scale(1); }
-}
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+          transform: translateX(-5px);
+        }
+        20%,
+        40%,
+        60%,
+        80% {
+          transform: translateX(5px);
+        }
+      }
 
-#secret-trigger {
-    animation: softBreath 4s infinite ease-in-out;
-}
-/* Efek Getar yang lebih halus */
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-    20%, 40%, 60%, 80% { transform: translateX(5px); }
-}
+      .shake-animation {
+        display: inline-block;
+        animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        color: #ff4d4d !important;
+        opacity: 1 !important;
+      }
 
-.shake-animation {
-    display: inline-block; /* Wajib agar transform bekerja */
-    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
-    color: #ff4d4d !important; /* Warna merah saat salah */
-    opacity: 1 !important;
-}
-/* Mengubah kursor standar menjadi hati */
-body {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="font-size:18px"><text y="18">❤️</text></svg>'), auto;
-}
+      body {
+        cursor:
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="font-size:18px"><text y="18">❤️</text></svg>'),
+          auto;
+      }
 
-/* Memastikan kursor berubah kembali menjadi 'tangan/pointer' saat menyentuh tombol agar Dinda tidak bingung */
-    button, 
-    a, 
-    .nav-link, 
-    #secret-trigger,
-    .gallery-item {
-    cursor: pointer;
-}
-/* Container Utama */
-.chat-container-card {
-    position: relative;
-    padding: 0 !important;
-    overflow: hidden;
-    height: 600px; /* Tinggi kotak putih utama */
-    display: block !important;
-    border: none !important;
-}
+      button,
+      a,
+      .nav-link,
+      #secret-trigger,
+      .gallery-item {
+        cursor: pointer;
+      }
 
-.chat-bg-img {
-    width: 100%;
-    height: 100%;
-}
+      .chat-container-card {
+        position: relative;
+        padding: 0 !important;
+        overflow: hidden;
+        height: 600px;
+        display: block !important;
+        border: none !important;
+      }
 
-.chat-bg-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+      .chat-bg-img {
+        width: 100%;
+        height: 100%;
+      }
+      .chat-bg-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-/* Kolom Percakapan Putih & Ramping */
-.chat-overlay-white {
-    position: absolute;
-    bottom: 20px; /* Jarak dari bawah agar tidak terlalu mepet */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%; /* Lebar kolom percakapan */
-    background: white; /* Warna putih solid */
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    cursor: pointer;
-    z-index: 10;
-}
+      .chat-overlay-white {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        z-index: 10;
+      }
 
-.chat-box-compact {
-    padding: 25px 35px;
-    position: relative;
-}
+      .chat-box-compact {
+        padding: 25px 35px;
+        position: relative;
+      }
+      .chat-role {
+        display: block;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #6c1d1d;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+      .chat-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        color: #444;
+        line-height: 1.5;
+        margin: 0;
+      }
+      .click-indicator {
+        position: absolute;
+        bottom: 8px;
+        right: 20px;
+        font-size: 0.55rem;
+        color: #999;
+        font-style: italic;
+      }
 
-.chat-role {
-    display: block;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #6c1d1d;
-    font-weight: 800;
-    margin-bottom: 8px;
-}
-
-.chat-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: #444;
-    line-height: 1.5;
-    margin: 0;
-}
-
-.click-indicator {
-    position: absolute;
-    bottom: 8px;
-    right: 20px;
-    font-size: 0.55rem;
-    color: #999;
-    font-style: italic;
-}
-
-/* Responsif HP */
-@media (max-width: 768px) {
-    .chat-container-card { height: 500px; }
-    .chat-overlay-white { width: 95%; bottom: 10px; }
-    .chat-text { font-size: 0.95rem; }
-}
-        
+      @media (max-width: 768px) {
+        .chat-container-card {
+          height: 500px;
+        }
+        .chat-overlay-white {
+          width: 95%;
+          bottom: 10px;
+        }
+        .chat-text {
+          font-size: 0.95rem;
+        }
+      }
     </style>
-</head>
-<body>
-
-<section id="intro" class="intro-page">
-    <div class="intro-container">
+  </head>
+  <body>
+    <section id="intro" class="intro-page">
+      <div class="intro-container">
         <div class="intro-content">
-            <img src="img/gerbera-removebg-preview.png" alt="Icon" class="intro-img" onerror="this.src='https://via.placeholder.com/200?text=❤️'">
-            <h2>Dinda</h2>
-            <p style="font-style: italic; opacity: 0.7; margin-bottom: 30px;">Ada sepucuk surat untukmu di hari spesial ini.</p>
-            <button id="open-btn" class="btn">BUKA DISINI</button>
+          <img
+            src="img/gerbera-removebg-preview.png"
+            alt="Icon"
+            class="intro-img"
+            onerror="this.src = 'https://via.placeholder.com/200?text=❤️'"
+          />
+          <h2>Dinda</h2>
+          <p style="font-style: italic; opacity: 0.7; margin-bottom: 30px">
+            Ada sepucuk surat untukmu di hari spesial ini.
+          </p>
+          <button id="open-btn" class="btn">BUKA DISINI</button>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<div class="main-content" id="main">
-    
-    <section id="home">
+    <div class="main-content" id="main">
+      <section id="home">
         <div class="glass-card">
-            <div class="text-area">
-                <h2>Hari ini,<br>milikmu.</h2>
-                <p>Biarkan dunia mengalah sejenak. Hari ini tidak ada tuntutan, tidak ada kebisingan yang berarti, kecuali namamu yang dirayakan.</p>
-                <button class="btn" id="play-music" style="margin-top: 20px;">Matikan Musik</button>
-            </div>
-            <div class="img-frame">
-                <img src="img/foto1.png" alt="Dinda" onerror="this.src='https://via.placeholder.com/400?text=Foto+1'">
-            </div>
+          <div class="text-area">
+            <h2>Hari ini,<br />milikmu.</h2>
+            <p>
+              Biarkan dunia mengalah sejenak. Hari ini tidak ada tuntutan, tidak
+              ada kebisingan yang berarti, kecuali namamu yang dirayakan.
+            </p>
+            <button class="btn" id="play-music" style="margin-top: 20px">
+              Matikan Musik
+            </button>
+          </div>
+          <div class="img-frame">
+            <img
+              src="img/foto1.png"
+              alt="Dinda"
+              onerror="this.src = 'https://via.placeholder.com/400?text=Foto+1'"
+            />
+          </div>
         </div>
-    </section>
+      </section>
 
-<section id="memories">
-    <div class="glass-card chat-container-card">
-        <div class="chat-bg-img">
-            <img src="img/foto-masakecil.png" alt="Dinda Memories">
-        </div>
-
-        <div class="chat-overlay-white" onclick="nextDialogue()">
+      <section id="memories">
+        <div class="glass-card chat-container-card">
+          <div class="chat-bg-img">
+            <img src="img/foto-masakecil.png" alt="Dinda Memories" />
+          </div>
+          <div class="chat-overlay-white" onclick="nextDialogue()">
             <div class="chat-box-compact">
-                <div id="chat-content" style="transition: all 0.4s ease;">
-                    <span class="chat-role" id="role-name">Dinda Kecil</span>
-                    <p class="chat-text" id="dialogue-text">"Kak, apakah dunia dewasa semenakutkan yang aku bayangkan?"</p>
-                </div>
-                <div class="click-indicator">Klik untuk lanjut...</div>
+              <div id="chat-content" style="transition: all 0.4s ease">
+                <span class="chat-role" id="role-name">Dinda Kecil</span>
+                <p class="chat-text" id="dialogue-text">
+                  "Kak, apakah dunia dewasa semenakutkan yang aku bayangkan?"
+                </p>
+              </div>
+              <div class="click-indicator">Klik untuk lanjut...</div>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </section>
 
-    <section id="gallery">
-        <div class="glass-card" style="grid-template-columns: 1fr;">
-            <h2 style="text-align: center; font-size: 1.8rem;">Sudut Cerita</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="img/foto3.png" onerror="this.src='https://via.placeholder.com/300x600?text=1'"></div>
-                <div class="gallery-item"><img src="img/foto5.png" onerror="this.src='https://via.placeholder.com/300x300?text=2'"></div>
-                <div class="gallery-item"><img src="img/foto6.png" onerror="this.src='https://via.placeholder.com/300x300?text=3'"></div>
-                <div class="gallery-item"><img src="img/sunset.jpg" onerror="this.src='https://via.placeholder.com/600x300?text=4'"></div>
-                <div class="gallery-item"><img src="img/foto4.png" onerror="this.src='https://via.placeholder.com/300x300?text=5'"></div>
-                <div class="gallery-item"><img src="img/foto7.png" onerror="this.src='https://via.placeholder.com/300x300?text=6'"></div>
-                <div class="gallery-item"><img src="img/foto9.png" onerror="this.src='https://via.placeholder.com/300x300?text=2'"></div>
+      <section id="gallery">
+        <div class="glass-card" style="grid-template-columns: 1fr">
+          <h2 style="text-align: center; font-size: 1.8rem">Sudut Cerita</h2>
+          <div class="gallery-grid">
+            <div class="gallery-item"><img src="img/foto3.png" /></div>
+            <div class="gallery-item"><img src="img/foto5.png" /></div>
+            <div class="gallery-item"><img src="img/foto6.png" /></div>
+            <div class="gallery-item"><img src="img/sunset.jpg" /></div>
+            <div class="gallery-item"><img src="img/foto4.png" /></div>
+            <div class="gallery-item"><img src="img/foto7.png" /></div>
+            <div class="gallery-item"><img src="img/foto9.png" /></div>
+          </div>
+        </div>
+      </section>
 
+      <section id="wish">
+        <div
+          class="glass-card"
+          style="
+            grid-template-columns: 1fr;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+          "
+        >
+          <div id="day-counter-wrapper" style="margin-bottom: 20px">
+            <h3 style="font-size: 1rem; opacity: 0.7; font-weight: 400">
+              Tepat hari ini,
+            </h3>
+            <div
+              id="day-number"
+              style="
+                font-size: 3.5rem;
+                font-weight: 700;
+                color: #6c1d1d;
+                font-family: &quot;Playfair Display&quot;, serif;
+              "
+            >
+              0
             </div>
-        </div>
-    </section>
-
-<section id="wish">
-    <div class="glass-card" style="grid-template-columns: 1fr; text-align: center; position: relative; z-index: 10;">
-        <div id="day-counter-wrapper" style="margin-bottom: 20px;">
-            <h3 style="font-size: 1rem; opacity: 0.7; font-weight: 400;">Tepat hari ini,</h3>
-            <div id="day-number" style="font-size: 3.5rem; font-weight: 700; color: #6c1d1d; font-family: 'Playfair Display', serif;">0</div>
-            <h3 style="font-size: 1rem; opacity: 0.7; font-weight: 400;">hari kamu telah menyinari dunia.</h3>
-        </div>
-
-        <p id="typing-text" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-style: italic; color: #5a4b3c; line-height: 1.6; min-height: 150px;"></p>
-        
-        <div style="margin-top: 40px; border-top: 1px dashed rgba(108, 29, 29, 0.1); padding-top: 30px;">
+            <h3 style="font-size: 1rem; opacity: 0.7; font-weight: 400">
+              hari kamu telah menyinari dunia.
+            </h3>
+          </div>
+          <p
+            id="typing-text"
+            style="
+              font-family: &quot;Playfair Display&quot;, serif;
+              font-size: 1.4rem;
+              font-style: italic;
+              color: #5a4b3c;
+              line-height: 1.6;
+              min-height: 150px;
+            "
+          ></p>
+          <div
+            style="
+              margin-top: 40px;
+              border-top: 1px dashed rgba(108, 29, 29, 0.1);
+              padding-top: 30px;
+            "
+          >
             <span id="secret-trigger">S E C R E T</span>
-            <p id="secret-message" style="display: none; margin-top: 20px; font-family: 'Playfair Display', serif; color: #6c1d1d; font-weight: bold;"></p>
-            
-            <div style="margin-top: 30px;">
-                <button id="write-wish-btn" class="btn" style="font-size: 0.8rem; padding: 10px 25px;">Tulis Harapanmu</button>
-                
-                <div id="wish-input-container" style="display: none; margin-top: 20px; animation: fadeInUp 0.8s ease;">
-                    <form id="my-form">
-                        <textarea name="Harapan_Dinda" id="dinda-wish-input" placeholder="Tulis harapanmu di sini..." 
-                            style="width: 85%; max-width: 400px; height: 100px; padding: 15px; border-radius: 20px; border: 1px solid #6c1d1d; background: rgba(255,255,255,0.9); font-family: 'Plus Jakarta Sans', sans-serif; outline: none; resize: none;"></textarea>
-                        <br>
-                        <button type="submit" id="save-wish-btn" class="btn" style="margin-top: 15px; font-size: 0.75rem;">Simpan di Hati</button>
-                    </form>
-                </div>
-                <p id="display-dinda-wish" style="margin-top: 25px; font-family: 'Playfair Display', serif; font-style: italic; color: #6c1d1d; font-size: 1.2rem; display: none; line-height: 1.6;"></p>
+            <p
+              id="secret-message"
+              style="
+                display: none;
+                margin-top: 20px;
+                font-family: &quot;Playfair Display&quot;, serif;
+                color: #6c1d1d;
+                font-weight: bold;
+              "
+            ></p>
+            <div style="margin-top: 30px">
+              <button
+                id="write-wish-btn"
+                class="btn"
+                style="font-size: 0.8rem; padding: 10px 25px"
+              >
+                Tulis Harapanmu
+              </button>
+              <div
+                id="wish-input-container"
+                style="display: none; margin-top: 20px"
+              >
+                <form id="my-form">
+                  <textarea
+                    name="Harapan_Dinda"
+                    id="dinda-wish-input"
+                    placeholder="Tulis harapanmu di sini..."
+                    style="
+                      width: 85%;
+                      max-width: 400px;
+                      height: 100px;
+                      padding: 15px;
+                      border-radius: 20px;
+                      border: 1px solid #6c1d1d;
+                      background: rgba(255, 255, 255, 0.9);
+                      font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
+                      outline: none;
+                      resize: none;
+                    "
+                  ></textarea>
+                  <br />
+                  <button
+                    type="submit"
+                    id="save-wish-btn"
+                    class="btn"
+                    style="margin-top: 15px; font-size: 0.75rem"
+                  >
+                    Simpan di Hati
+                  </button>
+                </form>
+              </div>
+              <p
+                id="display-dinda-wish"
+                style="
+                  margin-top: 25px;
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-style: italic;
+                  color: #6c1d1d;
+                  font-size: 1.2rem;
+                  display: none;
+                  line-height: 1.6;
+                "
+              ></p>
             </div>
+          </div>
         </div>
-    </div>
-</section>
-    <nav>
+      </section>
+
+      <nav>
         <a href="#home" class="nav-link active">Home</a>
         <a href="#memories" class="nav-link">Tumbuh</a>
         <a href="#gallery" class="nav-link">Gallery</a>
         <a href="#wish" class="nav-link">Wish</a>
-    </nav>
-</div>
+      </nav>
+    </div>
 
-<div class="bg-decor">
-    <div class="item-decor" style="font-size: 80px;">🌸</div>
-    <div class="item-decor" style="font-size: 100px;">🧸</div>
-    <div class="item-decor" style="font-size: 90px;">🌼</div>
-    <div class="item-decor" style="font-size: 70px;">❤️</div>
-    <div class="item-decor" style="font-size: 50px;">🌺</div>
-    <div class="item-decor" style="font-size: 60px;">🌷</div>
-    <div class="item-decor" style="font-size: 40px;">🌟</div>
-    <div class="item-decor" style="font-size: 70px;">🌍</div>
+    <div class="bg-decor">
+      <div class="item-decor">🌸</div>
+      <div class="item-decor">🧸</div>
+      <div class="item-decor">🌼</div>
+      <div class="item-decor">❤️</div>
+      <div class="item-decor">🌺</div>
+      <div class="item-decor">🌷</div>
+      <div class="item-decor">🌟</div>
+      <div class="item-decor">🌍</div>
+    </div>
 
-<audio id="bgm" loop src="Sempurna (Acoustic Version).mp3"></audio>
+    <audio id="bgm" loop src="Sempurna (Acoustic Version).mp3"></audio>
 
-<script>
-    const openBtn = document.getElementById('open-btn');
-    const intro = document.getElementById('intro');
-    const main = document.getElementById('main');
-    const audio = document.getElementById('bgm');
+    <script>
+      const openBtn = document.getElementById("open-btn");
+      const intro = document.getElementById("intro");
+      const main = document.getElementById("main");
+      const audio = document.getElementById("bgm");
 
-openBtn.addEventListener('click', () => {
-    // 1. Tambahkan class hidden untuk memicu animasi CSS translateY(-100%)
-    intro.classList.add('hidden');
-    
-    // 2. Tambahkan class visible pada main content
-    main.classList.add('visible');
+      openBtn.addEventListener("click", () => {
+        intro.classList.add("hidden");
+        main.classList.add("visible");
+        audio.play().catch(() => console.log("Musik aktif"));
+        startPetals();
+        document.body.style.overflow = "hidden";
+        main.focus();
+      });
 
-    // 3. Jalankan audio dan kelopak bunga
-    audio.play().catch(() => console.log("Musik aktif"));
-    startPetals();
-    
-    // 4. Aktifkan scroll pada body setelah intro hilang (opsional)
-    document.body.style.overflow = 'hidden'; // Pastikan body tetap hidden agar tidak bergeser
-    main.focus(); // Fokus pada main untuk mengaktifkan scroll di dalamnya
-});
-
-    document.getElementById('play-music').addEventListener('click', function() {
-        if(audio.paused) {
+      document
+        .getElementById("play-music")
+        .addEventListener("click", function () {
+          if (audio.paused) {
             audio.play();
             this.textContent = "Matikan Musik";
-        } else {
+          } else {
             audio.pause();
             this.textContent = "Nyalakan Musik";
-        }
-    });
-
- // Fungsi membuat satu kelopak
-function createPetal() {
-    const petal = document.createElement('div');
-    petal.classList.add('petal');
-    
-    // Posisi horizontal acak di seluruh lebar layar
-    petal.style.left = Math.random() * 100 + 'vw';
-    
-    // Ukuran kelopak variatif (8px sampai 20px)
-    const size = Math.random() * 12 + 8 + 'px';
-    petal.style.width = size;
-    petal.style.height = size;
-    
-    // Kecepatan jatuh acak (5 detik sampai 10 detik)
-    const duration = Math.random() * 5 + 5;
-    petal.style.animationDuration = duration + 's';
-    
-    // Transparansi acak agar terlihat natural
-    petal.style.opacity = Math.random() * 0.6 + 0.2;
-
-    document.body.appendChild(petal);
-
-    // PENTING: Hapus kelopak dari sistem setelah animasi selesai 
-    // agar website tetap ringan dan tidak lemot
-    setTimeout(() => {
-        petal.remove();
-    }, duration * 1000);
-}
-
-// Fungsi menjalankan hujan kelopak
-function startPetals() {
-    // Interval 450ms adalah angka ideal: cukup ramai tapi tetap ringan
-    setInterval(createPetal, 450);
-    
-    // Tambahkan 5 kelopak instan saat awal agar tidak terlihat kosong
-    for(let i = 0; i < 5; i++) {
-        setTimeout(createPetal, Math.random() * 1000);
-    }
-}
-    function startPetals() { setInterval(createPetal, 300); }
-
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    main.addEventListener('scroll', () => {
-        let current = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (main.scrollTop >= sectionTop - 150) {
-                current = section.getAttribute('id');
-            }
+          }
         });
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
-        });
-    });
-    // --- TARUH KODE INI DI LUAR FUNGSI APAPUN (DI BAGIAN BAWAH SCRIPT) ---
-
-document.addEventListener('mousemove', function(e) {
-    const spark = document.createElement('div');
-    spark.innerHTML = '❤️';
-    spark.style.position = 'fixed'; // Gunakan fixed agar tetap muncul saat di-scroll
-    spark.style.left = e.clientX + 'px';
-    spark.style.top = e.clientY + 'px';
-    spark.style.fontSize = Math.random() * 10 + 12 + 'px'; 
-    spark.style.pointerEvents = 'none'; 
-    spark.style.zIndex = '100000'; // Pastikan angka ini paling tinggi
-    spark.style.opacity = '0.8';
-    spark.style.transition = 'all 0.8s ease';
-    
-    document.body.appendChild(spark);
-
-    // Animasi langsung jalan tanpa menunggu password
-    setTimeout(() => {
-        spark.style.transform = `translateY(-60px) scale(0.5) rotate(${Math.random() * 360}deg)`;
-        spark.style.opacity = '0';
-    }, 50);
-
-    setTimeout(() => {
-        spark.remove();
-    }, 800);
-});
-    // Fungsi untuk memicu animasi saat elemen muncul di layar
-const observerOptions = {
-    threshold: 0.2 // Animasi jalan jika 20% kartu sudah terlihat
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-        } else {
-            // Hapus baris di bawah jika ingin animasi hanya sekali saja
-            entry.target.classList.remove('is-visible'); 
-        }
-    });
-    
-}, observerOptions);
-
-// Daftarkan semua glass-card ke observer
-document.querySelectorAll('.glass-card').forEach(card => {
-    observer.observe(card);
-});
-
-// Perbaikan fungsi scroll nav agar lebih akurat
-main.addEventListener('scroll', () => {
-    let current = "";
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (main.scrollTop >= (sectionTop - sectionHeight / 3)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
-});
-// --- KONFIGURASI ---
-const birthDate = new Date('2005-03-22'); // SESUAIKAN TAHUN LAHIR DINDA DI SINI (YYYY-MM-DD)
-const message = "Selamat menginjak usia dua puluh satu, Dinda. Aku tahu, di usia ini hidup belum rapi—dan memang belum seharusnya. Kamu mungkin masih ragu, masih salah langkah, masih bertanya ke diri sendiri lebih sering daripada menemukan jawaban. Tapi justru di situlah kamu sedang benar-benar tumbuh. Kamu tidak lagi hanya mencari siapa dirimu, kamu sedang membentuknya, dengan pilihan-pilihan kecil, dengan keberanian mencoba, dengan jatuh yang kadang kamu simpan sendiri. Aku berharap, setiap langkahmu tetap punya arah, meski harus melewati kebingungan lebih dulu, dan semoga setiap lelahmu selalu punya tempat untuk pulang. Di usia ini, kamu bukan karakter sampingan dalam hidupmu sendiri. Kamu penulisnya yang terkadang salah memilih kata, mencoret kalimat, lalu menulis ulang. Tidak apa-apa, cerita yang jujur memang jarang rapi sejak awal. Semoga halaman-halaman berikutnya diisi tawa yang lahir dari syukur, mimpi yang perlahan berani kamu kejar, dan bahagia yang tidak selalu sempurna, tapi sungguh kamu rasakan. Teruslah berjalan dengan caramu sendiri, kalau lelah, berhenti sejenak bukan untuk menyerah, tapi untuk ingat bahwa kamu sedang menuju sesuatu yang berarti.";
-
-let hasStarted = false;
-
-// Fungsi hitung selisih hari
-function calculateDays() {
-    const today = new Date();
-    const diffTime = Math.abs(today - birthDate);
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-}
-
-function typeWriter(text, i, fnCallback) {
-    if (i < text.length) {
-        // Hapus karakter | di sini, cukup biarkan span cursor yang bekerja
-        document.getElementById("typing-text").innerHTML = text.substring(0, i + 1) + '<span aria-hidden="true" class="cursor"></span>';
-        setTimeout(function() {
-            typeWriter(text, i + 1, fnCallback)
-        }, 50); 
-    } else if (typeof fnCallback == 'function') {
-        setTimeout(fnCallback, 700);
-    }
-}
-
-// Fungsi Animasi Angka
-function animateValue(obj, start, end, duration) {
-    let startTimestamp = null;
-    const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString('id-ID');
-        if (progress < 1) {
-            window.requestAnimationFrame(step);
-        } else {
-            // Setelah angka selesai, mulai ngetik
-            typeWriter(message, 0);
-        }
-    };
-    window.requestAnimationFrame(step);
-}
-
-// Trigger saat section "Wish" terlihat
-const wishObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !hasStarted) {
-            hasStarted = true;
-            const totalDays = calculateDays();
-            const displayObj = document.getElementById("day-number");
-            animateValue(displayObj, 0, totalDays, 2000); // Animasi angka selama 2 detik
-        }
-    });
-}, { threshold: 0.5 });
-
-wishObserver.observe(document.getElementById('wish'));
-
- 
- 
- 
-// --- LOGIKA PASSWORD RAHASIA ---
-const secretBtn = document.getElementById('secret-trigger');
-const secretMsgContainer = document.getElementById('secret-message');
-const finalMsg = document.getElementById('final-message');
-
-secretBtn.addEventListener('click', function() {
-    // 1. Munculkan Prompt (Minta Password)
-    const passwordInput = prompt("Tanyakan Password Pada Pembuat yaa:");
-
-    // 2. Cek Password (Pastikan dinda mengetik 22MaretDinda atau 22maretdinda tetap bisa)
-    if (passwordInput && passwordInput.toLowerCase() === "3tangkaigerbera") { 
-        
-        // HANYA JIKA BENAR: Hilangkan tombol SECRET secara perlahan
-        this.style.opacity = '0';
-        
+      function createPetal() {
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+        petal.style.left = Math.random() * 100 + "vw";
+        const size = Math.random() * 12 + 8 + "px";
+        petal.style.width = size;
+        petal.style.height = size;
+        const duration = Math.random() * 5 + 5;
+        petal.style.animationDuration = duration + "s";
+        petal.style.opacity = Math.random() * 0.6 + 0.2;
+        document.body.appendChild(petal);
         setTimeout(() => {
-            this.style.display = 'none'; // Baru benar-benar dihapus setelah transisi selesai
-            
-            // Munculkan Pesan Rahasia 1
-            secretMsgContainer.innerHTML = "I Will Love You Forever And Ever ❤️"; 
-            secretMsgContainer.style.display = "block";
-            
-            // Munculkan Kalimat Final (I will love you...)
-            setTimeout(() => {
-                finalMsg.style.opacity = '1';
-            }, 800);
-            
-            alert("Yay! Passwordnya benar. Semoga harimu menyenangkan yaa!");
-        }, 500);
+          petal.remove();
+        }, duration * 1000);
+      }
 
-    } else if (passwordInput === null) {
-        // Jika Dinda menekan tombol 'Cancel', jangan lakukan apapun (tombol tetap ada)
-        console.log("Input dibatalkan");
-} else {
-    // JIKA SALAH:
-    // 1. Hapus class jika sebelumnya sudah ada (reset)
-    this.classList.remove('shake-animation');
-    
-    // 2. Trik 'Magic' untuk me-restart animasi CSS
-    void this.offsetWidth; 
-    
-    // 3. Tambahkan kembali class-nya
-    this.classList.add('shake-animation');
-    
-    // Munculkan peringatan setelah getaran mulai
-    setTimeout(() => {
-        alert("Yahh, passwordnya salah. Coba tanya lagi ya!");
-    }, 100);
-}
+      function startPetals() {
+        setInterval(createPetal, 450);
+      }
 
-});
-// --- LOGIKA FORMSPREE & WISH ---
-const form = document.getElementById("my-form");
-const writeWishBtn = document.getElementById('write-wish-btn');
-const wishInputContainer = document.getElementById('wish-input-container');
-const displayDindaWish = document.getElementById('display-dinda-wish');
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-link");
 
-if(writeWishBtn) {
-    writeWishBtn.addEventListener('click', function() {
-        wishInputContainer.style.display = 'block';
-        this.style.display = 'none';
-        // Scroll otomatis ke bawah agar input terlihat
-        wishInputContainer.scrollIntoView({ behavior: 'smooth' });
-    });
-}
-
-if(form) {
-    form.addEventListener("submit", async function(event) {
-        event.preventDefault();
-        
-        const wishValue = document.getElementById('dinda-wish-input').value;
-        const saveBtn = document.getElementById('save-wish-btn');
-
-        if (wishValue.trim() === "") {
-            alert("Tuliskan sesuatu dulu yaa..");
-            return;
-        }
-
-        // GANTI INI: Pakai ID dari Formspree kamu
-        const endpoint = "https://formspree.io/f/mnjvojev"; 
-
-        saveBtn.innerText = "Mengirim...";
-        saveBtn.disabled = true;
-
-        const data = new FormData(event.target);
-
-        fetch(endpoint, {
-            method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
-        }).then(response => {
-            if (response.ok) {
-                wishInputContainer.style.display = 'none';
-                displayDindaWish.innerHTML = `“${wishValue}”<br><span style="font-size: 0.8rem; font-style: normal; opacity: 0.6; display: block; margin-top: 10px;">— Harapanmu telah tersimpan di semesta.</span>`;
-                displayDindaWish.style.display = 'block';
-                alert("Harapanmu sudah tersimpan dengan aman, Dinda.");
-            } else {
-                alert("Maaf, gagal mengirim. Coba lagi nanti.");
-                saveBtn.innerText = "Simpan di Hati";
-                saveBtn.disabled = false;
-            }
-        }).catch(() => {
-            alert("Koneksi bermasalah.");
-            saveBtn.innerText = "Simpan di Hati";
-            saveBtn.disabled = false;
+      main.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (main.scrollTop >= sectionTop - sectionHeight / 3) {
+            current = section.getAttribute("id");
+          }
         });
-    });
-}
-const dialogues = [
-    { role: "Dinda Mungil", text: '"Kak, apakah dunia dewasa semenakutkan yang aku bayangkan?"' },
-    { role: "Dinda ", text: '"Kadang-kadang. Tapi jangan takut, kita punya banyak keberanian yang belum kamu tahu sekarang."' },
-    { role: "Dinda Mungil", text: '"Apakah kita masih suka melihat bintang dan bermimpi yang tinggi?"' },
-    { role: "Dinda ", text: '"Tentu. Hanya saja sekarang, kita bukan cuma melihatnya, kita sedang belajar cara menjangkaunya satu per satu."' },
-    { role: "Dinda Mungil", text: '"Aku bangga padamu, Kak. Terima kasih sudah tidak menyerah."' },
-    { role: "Dinda ", text: '"Terima kasih sudah tumbuh sehebat ini, Dinda kecilku."' }
-];
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").slice(1) === current) {
+            link.classList.add("active");
+          }
+        });
+      });
 
-let currentIdx = 0;
+      document.addEventListener("mousemove", function (e) {
+        const spark = document.createElement("div");
+        spark.innerHTML = "❤️";
+        spark.style.position = "fixed";
+        spark.style.left = e.clientX + "px";
+        spark.style.top = e.clientY + "px";
+        spark.style.fontSize = Math.random() * 10 + 12 + "px";
+        spark.style.pointerEvents = "none";
+        spark.style.zIndex = "100000";
+        spark.style.opacity = "0.8";
+        spark.style.transition = "all 0.8s ease";
+        document.body.appendChild(spark);
+        setTimeout(() => {
+          spark.style.transform = `translateY(-60px) scale(0.5) rotate(${Math.random() * 360}deg)`;
+          spark.style.opacity = "0";
+        }, 50);
+        setTimeout(() => {
+          spark.remove();
+        }, 800);
+      });
 
-function nextDialogue() {
-    const content = document.getElementById('chat-content');
-    const roleName = document.getElementById('role-name');
-    const dialogueText = document.getElementById('dialogue-text');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("is-visible");
+          });
+        },
+        { threshold: 0.2 },
+      );
 
-    currentIdx++;
-    
-    // Jika percakapan selesai, kembali ke awal
-    if (currentIdx >= dialogues.length) {
-        currentIdx = 0;
-    }
+      document
+        .querySelectorAll(".glass-card")
+        .forEach((card) => observer.observe(card));
 
-    // Efek transisi halus
-    content.style.opacity = "0";
-    content.style.transform = "translateY(5px)";
+      const birthDate = new Date("2005-03-22");
+      const message =
+        "Selamat menginjak usia dua puluh satu, Dinda. Aku tahu, di usia ini hidup belum rapi, dan memang belum seharusnya. Kamu mungkin masih ragu, masih salah langkah, masih bertanya ke diri sendiri lebih sering daripada menemukan jawaban. Tapi justru di situlah kamu sedang benar-benar tumbuh. Kamu tidak lagi hanya mencari siapa dirimu, kamu sedang membentuknya, dengan pilihan-pilihan kecil, dengan keberanian mencoba, dengan jatuh yang kadang kamu simpan sendiri. Aku berharap, setiap langkahmu tetap punya arah, meski harus melewati kebingungan lebih dulu, dan semoga setiap lelahmu selalu punya tempat untuk pulang. Di usia ini, kamu bukan karakter sampingan dalam hidupmu sendiri. Kamu penulisnya yang terkadang salah memilih kata, mencoret kalimat, lalu menulis ulang. Tidak apa-apa, cerita yang jujur memang jarang rapi sejak awal. Semoga halaman-halaman berikutnya diisi tawa yang lahir dari syukur, mimpi yang perlahan berani kamu kejar, dan bahagia yang tidak selalu sempurna, tapi sungguh kamu rasakan. Teruslah berjalan dengan caramu sendiri, kalau lelah, berhenti sejenak bukan untuk menyerah, tapi untuk ingat bahwa kamu sedang menuju sesuatu yang berarti.";
+      let hasStarted = false;
 
-    setTimeout(() => {
-        roleName.innerText = dialogues[currentIdx].role;
-        dialogueText.innerText = dialogues[currentIdx].text;
-        content.style.opacity = "1";
-        content.style.transform = "translateY(0)";
-    }, 300);
-}
-</script>
+      function calculateDays() {
+        const today = new Date();
+        return Math.ceil(Math.abs(today - birthDate) / (1000 * 60 * 60 * 24));
+      }
 
-</body>
+      function typeWriter(text, i) {
+        if (i < text.length) {
+          document.getElementById("typing-text").innerHTML =
+            text.substring(0, i + 1) + '<span class="cursor"></span>';
+          setTimeout(() => typeWriter(text, i + 1), 50);
+        }
+      }
+
+      function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          obj.innerHTML = Math.floor(
+            progress * (end - start) + start,
+          ).toLocaleString("id-ID");
+          if (progress < 1) window.requestAnimationFrame(step);
+          else typeWriter(message, 0);
+        };
+        window.requestAnimationFrame(step);
+      }
+
+      const wishObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !hasStarted) {
+              hasStarted = true;
+              animateValue(
+                document.getElementById("day-number"),
+                0,
+                calculateDays(),
+                2000,
+              );
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+      wishObserver.observe(document.getElementById("wish"));
+
+      const secretBtn = document.getElementById("secret-trigger");
+      secretBtn.addEventListener("click", function () {
+        const passwordInput = prompt("Tanyakan Password Pada Pembuat yaa:");
+        if (
+          passwordInput &&
+          passwordInput.toLowerCase() === "3 tangkai gerbera"
+        ) {
+          this.style.display = "none";
+          const msg = document.getElementById("secret-message");
+          msg.innerHTML = "I Will Love You Forever And Ever ❤️";
+          msg.style.display = "block";
+          alert("Yay! Passwordnya benar, selamat menginjak 21 din!");
+        } else if (passwordInput !== null) {
+          this.classList.add("shake-animation");
+          setTimeout(() => {
+            this.classList.remove("shake-animation");
+            alert("Yah, salah, coba tanya lagi yaa!");
+          }, 500);
+        }
+      });
+
+      const form = document.getElementById("my-form");
+      if (form) {
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const wishValue = document.getElementById("dinda-wish-input").value;
+          if (!wishValue.trim()) return alert("Tulis dulu ya..");
+          const saveBtn = document.getElementById("save-wish-btn");
+          saveBtn.innerText = "Mengirim...";
+          fetch("https://formspree.io/f/mnjvojev", {
+            method: "POST",
+            body: new FormData(event.target),
+            headers: { Accept: "application/json" },
+          }).then((response) => {
+            if (response.ok) {
+              document.getElementById("wish-input-container").style.display =
+                "none";
+              const display = document.getElementById("display-dinda-wish");
+              display.innerHTML = `“${wishValue}”<br><small>— Tersimpan di semesta.</small>`;
+              display.style.display = "block";
+            }
+          });
+        });
+      }
+
+      document
+        .getElementById("write-wish-btn")
+        .addEventListener("click", function () {
+          document.getElementById("wish-input-container").style.display =
+            "block";
+          this.style.display = "none";
+        });
+
+      const dialogues = [
+        {
+          role: "Dinda Mungil",
+          text: '"Kak, apakah dunia dewasa semenakutkan yang aku bayangkan?"',
+        },
+        {
+          role: "Dinda ",
+          text: '"Kadang-kadang. Tapi jangan takut, kita punya banyak keberanian yang belum kamu tahu sekarang."',
+        },
+        {
+          role: "Dinda Mungil",
+          text: '"Apakah kita masih suka melihat bintang dan bermimpi yang tinggi?"',
+        },
+        {
+          role: "Dinda ",
+          text: '"Tentu. Hanya saja sekarang, kita bukan cuma melihatnya, kita sedang belajar cara menjangkaunya satu per satu."',
+        },
+        {
+          role: "Dinda Mungil",
+          text: '"Aku bangga padamu, Kak. Terima kasih sudah tidak menyerah."',
+        },
+        {
+          role: "Dinda ",
+          text: '"Terima kasih sudah tumbuh sehebat ini, Dinda kecilku."',
+        },
+      ];
+      let currentIdx = 0;
+      function nextDialogue() {
+        currentIdx = (currentIdx + 1) % dialogues.length;
+        const content = document.getElementById("chat-content");
+        content.style.opacity = "0";
+        setTimeout(() => {
+          document.getElementById("role-name").innerText =
+            dialogues[currentIdx].role;
+          document.getElementById("dialogue-text").innerText =
+            dialogues[currentIdx].text;
+          content.style.opacity = "1";
+        }, 300);
+      }
+    </script>
+  </body>
 </html>
-    <style>
