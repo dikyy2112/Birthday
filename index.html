@@ -197,24 +197,38 @@
         position: relative;
       }
       #wish {
-        height: auto !important;
+        height: auto !important; /* Biarkan tinggi menyesuaikan konten */
         min-height: 100vh;
-        padding-top: 80px;
-        padding-bottom: 120px;
+        padding: 80px 20px 120px 20px;
         display: flex;
-        flex-direction: column;
+        align-items: center; /* Pusatkan secara vertikal */
         justify-content: center;
       }
-
       #wish .glass-card {
         height: auto !important;
+        max-width: 600px; /* Batasi lebar agar enak dibaca di laptop */
         margin: 0 auto;
+        display: flex; /* Ubah dari grid ke flex untuk kontrol lebih mudah */
+        flex-direction: column;
+        gap: 20px;
       }
 
+      /* Pastikan area teks punya ruang minimum agar tidak goyang saat mengetik */
       #typing-text {
-        min-height: 100px;
+        min-height: 200px; /* Beri ruang yang cukup besar */
         margin-bottom: 20px;
         word-wrap: break-word;
+        font-size: 1.2rem; /* Ukuran lebih proporsional untuk HP */
+      }
+      @media (max-width: 768px) {
+        #typing-text {
+          font-size: 1.1rem; /* Sedikit lebih kecil di HP */
+          min-height: 350px; /* Lebih tinggi karena teks akan memanjang ke bawah */
+        }
+
+        #day-number {
+          font-size: 2.5rem !important; /* Ukuran angka lebih proporsional di HP */
+        }
       }
 
       .glass-card {
@@ -680,12 +694,24 @@
           style="
             grid-template-columns: 1fr;
             text-align: center;
-            position: relative;
-            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 25px;
+            max-width: 700px;
+            margin: 0 auto;
           "
         >
-          <div id="day-counter-wrapper" style="margin-bottom: 20px">
-            <h3 style="font-size: 1rem; opacity: 0.7; font-weight: 400">
+          <div id="day-counter-wrapper" style="width: 100%">
+            <h3
+              style="
+                font-size: 1rem;
+                opacity: 0.7;
+                font-weight: 400;
+                margin-bottom: 5px;
+              "
+            >
               Tepat hari ini,
             </h3>
             <div
@@ -695,62 +721,113 @@
                 font-weight: 700;
                 color: #6c1d1d;
                 font-family: &quot;Playfair Display&quot;, serif;
+                line-height: 1.2;
               "
             >
               0
             </div>
-            <h3 style="font-size: 1rem; opacity: 0.7; font-weight: 400">
+            <h3
+              style="
+                font-size: 1rem;
+                opacity: 0.7;
+                font-weight: 400;
+                margin-top: 5px;
+              "
+            >
               hari kamu telah menyinari dunia.
             </h3>
           </div>
-          <p
-            id="typing-text"
+
+          <div
             style="
-              font-family: &quot;Playfair Display&quot;, serif;
-              font-size: 1.4rem;
-              font-style: italic;
-              color: #5a4b3c;
-              line-height: 1.6;
-              min-height: 150px;
+              width: 100%;
+              margin-top: 30px;
+              display: flex;
+              justify-content: center;
             "
-          ></p>
+          >
+            <p
+              id="typing-text"
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 1.3rem;
+                font-style: italic;
+                color: #5a4b3c;
+                line-height: 1.8;
+                min-height: 180px;
+                text-align: center;
+                width: 100%;
+                max-width: 550px;
+              "
+            ></p>
+          </div>
+
           <div
             style="
               margin-top: 40px;
               border-top: 1px dashed rgba(108, 29, 29, 0.1);
               padding-top: 30px;
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
             "
           >
-            <span id="secret-trigger">S E C R E T</span>
+            <span
+              id="secret-trigger"
+              style="display: block; width: fit-content; margin-bottom: 10px"
+            >
+              S E C R E T
+            </span>
+
             <p
               id="secret-message"
               style="
                 display: none;
-                margin-top: 20px;
+                margin: 15px 0;
                 font-family: &quot;Playfair Display&quot;, serif;
                 color: #6c1d1d;
                 font-weight: bold;
+                text-align: center;
               "
             ></p>
-            <div style="margin-top: 30px">
+
+            <div
+              style="
+                margin-top: 20px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              "
+            >
               <button
                 id="write-wish-btn"
                 class="btn"
-                style="font-size: 0.8rem; padding: 10px 25px"
+                style="font-size: 0.8rem; padding: 12px 30px"
               >
                 Tulis Harapanmu
               </button>
+
               <div
                 id="wish-input-container"
-                style="display: none; margin-top: 20px"
+                style="display: none; margin-top: 20px; width: 100%"
               >
-                <form id="my-form">
+                <form
+                  id="my-form"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                  "
+                >
                   <textarea
                     name="Harapan_Dinda"
                     id="dinda-wish-input"
                     placeholder="Tulis harapanmu di sini..."
                     style="
-                      width: 85%;
+                      width: 90%;
                       max-width: 400px;
                       height: 100px;
                       padding: 15px;
@@ -760,9 +837,9 @@
                       font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
                       outline: none;
                       resize: none;
+                      text-align: center;
                     "
                   ></textarea>
-                  <br />
                   <button
                     type="submit"
                     id="save-wish-btn"
@@ -773,6 +850,7 @@
                   </button>
                 </form>
               </div>
+
               <p
                 id="display-dinda-wish"
                 style="
@@ -783,6 +861,7 @@
                   font-size: 1.2rem;
                   display: none;
                   line-height: 1.6;
+                  text-align: center;
                 "
               ></p>
             </div>
