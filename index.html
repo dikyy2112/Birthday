@@ -610,6 +610,29 @@
           font-size: 0.95rem;
         }
       }
+
+      .intro-subtext,
+      .intro-whisper {
+        font-style: italic;
+        opacity: 0;
+        margin-bottom: 10px;
+        animation: fadeInUp 1.5s ease forwards;
+      }
+
+      .intro-whisper {
+        margin-bottom: 30px;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 0.7;
+          transform: translateY(0);
+        }
+      }
     </style>
   </head>
   <body>
@@ -623,8 +646,13 @@
             onerror="this.src = 'https://via.placeholder.com/200?text=❤️'"
           />
           <h2>Dinda</h2>
-          <p style="font-style: italic; opacity: 0.7; margin-bottom: 30px">
+          <p style="font-style: italic; opacity: 0.7; margin-bottom: 30px"></p>
+          <p class="intro-subtext">
             Ada sepucuk surat untukmu di hari spesial ini.
+          </p>
+
+          <p class="intro-whisper">
+            Yang mungkin tidak pernah sempat aku ucapkan dengan suara.
           </p>
           <button id="open-btn" class="btn">BUKA DISINI</button>
         </div>
