@@ -962,7 +962,7 @@
       }
 
       function startPetals() {
-        setInterval(createPetal, 450);
+        setInterval(createPetal, 800);
       }
 
       const sections = document.querySelectorAll("section");
@@ -985,7 +985,12 @@
         });
       });
 
+      let lastSpark = 0;
       document.addEventListener("mousemove", function (e) {
+        const now = Date.now();
+        if (now - lastSpark < 100) return; // hanya 1 tiap 100ms
+        lastSpark = now;
+
         const spark = document.createElement("div");
         spark.innerHTML = "❤️";
         spark.style.position = "fixed";
@@ -997,10 +1002,12 @@
         spark.style.opacity = "0.8";
         spark.style.transition = "all 0.8s ease";
         document.body.appendChild(spark);
+
         setTimeout(() => {
-          spark.style.transform = `translateY(-60px) scale(0.5) rotate(${Math.random() * 360}deg)`;
+          spark.style.transform = `translateY(-60px) scale(0.5)`;
           spark.style.opacity = "0";
         }, 50);
+
         setTimeout(() => {
           spark.remove();
         }, 800);
@@ -1072,11 +1079,11 @@
       const secretBtn = document.getElementById("secret-trigger");
       secretBtn.addEventListener("click", function () {
         const passwordInput = prompt(
-          "Passwordnya ada di bloger dengan gambar yang sama pada halaman awal sebelum membuka surat, password terlekak di judul..selamat mencari yaa!",
+          "Passwordnya ada di blogger dengan gambar yang sama pada halaman awal sebelum membuka surat, password terletak di judul..selamat mencari yaa! (Hint: ada angka dan jenis bunga di dalamnya) :)",
         );
         if (
           passwordInput &&
-          passwordInput.toLowerCase() === "3 TANGKAI GERBERA"
+          passwordInput.toLowerCase() === "3 tangkai gerbera"
         ) {
           this.style.display = "none";
           const msg = document.getElementById("secret-message");
