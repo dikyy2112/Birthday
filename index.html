@@ -1071,10 +1071,12 @@
 
       const secretBtn = document.getElementById("secret-trigger");
       secretBtn.addEventListener("click", function () {
-        const passwordInput = prompt("Tanyakan Password Pada Pembuat yaa:");
+        const passwordInput = prompt(
+          "Passwordnya ada di bloger dengan gambar yang sama pada halaman awal sebelum membuka surat, password terlekak di judul..selamat mencari yaa!",
+        );
         if (
           passwordInput &&
-          passwordInput.toLowerCase() === "3 tangkai gerbera"
+          passwordInput.toLowerCase() === "3 TANGKAI GERBERA"
         ) {
           this.style.display = "none";
           const msg = document.getElementById("secret-message");
@@ -1085,7 +1087,7 @@
           this.classList.add("shake-animation");
           setTimeout(() => {
             this.classList.remove("shake-animation");
-            alert("Yah, salah, coba tanya lagi yaa!");
+            alert("Yah, salah, coba cari lagi yaa!");
           }, 500);
         }
       });
