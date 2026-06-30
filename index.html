@@ -3,1173 +3,185 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>22 Maret 'Dinda'</title>
+    <title>22 Maret 'Dinda' - Selamat Ulang Tahun & Perpisahan</title>
     <link rel="icon" href="img/download.jpg" type="image/x-icon" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Playfair+Display:italic,wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-
-    <style>
-      /* --- Latar Belakang Baru --- */
-      body {
-        background: #fdfaf7;
-        background: radial-gradient(circle at center, #fdfaf7 0%, #faeede 100%);
-        color: var(--text);
-        font-family: "Plus Jakarta Sans", sans-serif;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .bg-decor {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        pointer-events: none;
-        overflow: hidden;
-      }
-
-      .item-decor {
-        position: absolute;
-        opacity: 0.15;
-        filter: sepia(0.3);
-        animation: float 6s ease-in-out infinite;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0) rotate(0deg);
-        }
-        50% {
-          transform: translateY(-20px) rotate(10deg);
-        }
-      }
-
-      .item-decor:nth-child(1) {
-        top: 10%;
-        left: 5%;
-        font-size: 80px;
-        animation-delay: 0s;
-      }
-      .item-decor:nth-child(2) {
-        top: 70%;
-        left: 10%;
-        font-size: 100px;
-        animation-delay: 1s;
-      }
-      .item-decor:nth-child(3) {
-        top: 20%;
-        right: 10%;
-        font-size: 90px;
-        animation-delay: 2s;
-      }
-      .item-decor:nth-child(4) {
-        top: 80%;
-        right: 5%;
-        font-size: 70px;
-        animation-delay: 1.5s;
-      }
-      .item-decor:nth-child(5) {
-        top: 40%;
-        left: 40%;
-        font-size: 50px;
-        opacity: 0.08;
-      }
-      .item-decor:nth-child(6) {
-        top: 50%;
-        right: 30%;
-        font-size: 60px;
-        opacity: 0.08;
-      }
-
-      .glass-card {
-        background: rgba(255, 255, 255, 0.8) !important;
-        border: 1px solid rgba(255, 255, 255, 1);
-      }
-      /* --- Intro Section --- */
-      .intro-page {
-        position: fixed;
-        inset: 0;
-        background: #fdfaf7;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
-      }
-
-      .intro-container {
-        border: 1px solid rgba(108, 29, 29, 0.1);
-        padding: 60px 40px;
-        border-radius: 40px;
-        text-align: center;
-        position: relative;
-        background: white;
-        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.02);
-      }
-      .intro-page.hidden {
-        transform: translateY(-100%);
-      }
-
-      .intro-img {
-        width: 180px;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 20px;
-        margin-bottom: 25px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        border: 4px solid white;
-        animation: fadeInUp 1.5s ease forwards;
-      }
-
-      .intro-content h2 {
-        font-family: "Playfair Display", serif;
-        font-size: 3rem;
-        font-weight: 400;
-        margin-bottom: 10px;
-      }
-
-      .btn {
-        background-color: #6c1d1d !important;
-        color: #ffffff !important;
-        padding: 14px 35px;
-        border-radius: 50px;
-        border: none;
-        cursor: pointer;
-        font-family: "Plus Jakarta Sans", sans-serif;
-        font-weight: 600;
-        display: inline-block;
-        text-align: center;
-        text-decoration: none;
-        letter-spacing: 1px;
-        transition: all 0.4s ease;
-        box-shadow: 0 10px 20px rgba(108, 29, 29, 0.3);
-        position: relative;
-        z-index: 10;
-      }
-
-      .btn:hover {
-        transform: scale(1.15);
-        background: #8b2a2a;
-        box-shadow: 0 15px 30px rgba(108, 29, 29, 0.3);
-      }
-
-      #open-btn {
-        animation: pulse 2s infinite;
-      }
-
-      @keyframes pulse {
-        0% {
-          box-shadow: 0 0 0 0 rgba(108, 29, 29, 0.4);
-        }
-        70% {
-          box-shadow: 0 0 0 15px rgba(108, 29, 29, 0);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(108, 29, 29, 0);
-        }
-      }
-
-      .main-content {
-        height: 100vh;
-        overflow-y: auto;
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
-        opacity: 0;
-        transition: opacity 1s ease-in;
-        display: block !important;
-      }
-      .main-content.visible {
-        opacity: 1;
-      }
-
-      section {
-        height: 100vh;
-        scroll-snap-align: start;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 40px 20px;
-        position: relative;
-      }
-      #wish {
-        height: auto !important; /* Biarkan tinggi menyesuaikan konten */
-        min-height: 100vh;
-        padding: 80px 20px 120px 20px;
-        display: flex;
-        align-items: center; /* Pusatkan secara vertikal */
-        justify-content: center;
-      }
-      #wish .glass-card {
-        height: auto !important;
-        max-width: 600px; /* Batasi lebar agar enak dibaca di laptop */
-        margin: 0 auto;
-        display: flex; /* Ubah dari grid ke flex untuk kontrol lebih mudah */
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      /* Pastikan area teks punya ruang minimum agar tidak goyang saat mengetik */
-      #typing-text {
-        min-height: 200px; /* Beri ruang yang cukup besar */
-        margin-bottom: 20px;
-        word-wrap: break-word;
-        font-size: 1.2rem; /* Ukuran lebih proporsional untuk HP */
-      }
-      @media (max-width: 768px) {
-        #typing-text {
-          font-size: 1.1rem; /* Sedikit lebih kecil di HP */
-          min-height: 350px; /* Lebih tinggi karena teks akan memanjang ke bawah */
-        }
-
-        #day-number {
-          font-size: 2.5rem !important; /* Ukuran angka lebih proporsional di HP */
-        }
-      }
-
-      .glass-card {
-        background: var(--glass);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 30px;
-        padding: 40px;
-        max-width: 900px;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        align-items: center;
-        transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-        opacity: 0;
-        transform: translateY(50px);
-      }
-
-      .glass-card.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 180px);
-        gap: 15px;
-        width: 100%;
-        perspective: 1000px;
-      }
-
-      .gallery-item {
-        border-radius: 15px;
-        overflow: hidden;
-        position: relative;
-        box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
-        background: rgba(0, 0, 0, 0.03);
-        transition: all 0.5s ease;
-      }
-
-      .gallery-item:nth-child(1) {
-        grid-row: span 2;
-      }
-      .gallery-item:nth-child(4) {
-        grid-column: span 2;
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        transform: scale(0.85) rotateX(15deg) rotateY(-15deg) rotateZ(3deg);
-        filter: brightness(0.9);
-        border-radius: 10px;
-      }
-
-      .gallery-item:hover {
-        box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
-      }
-
-      .gallery-item:hover img {
-        transform: scale(1.1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-        filter: brightness(1);
-        border-radius: 0px;
-      }
-      .gallery-item::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 50%;
-        height: 100%;
-        background: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0.3) 50%,
-          rgba(255, 255, 255, 0) 100%
-        );
-        transform: skewX(-25deg);
-        transition: 0.7s;
-      }
-
-      .gallery-item:hover::after {
-        left: 125%;
-      }
-
-      .img-frame {
-        width: 100%;
-        height: 400px;
-        border-radius: 20px;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .img-frame img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.8s ease;
-      }
-
-      .img-frame:hover img {
-        transform: scale(1.1);
-      }
-
-      h2 {
-        font-family: "Playfair Display", serif;
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-      }
-      p {
-        line-height: 1.8;
-        color: #5a4b3c;
-      }
-
-      nav {
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        padding: 10px 25px;
-        border-radius: 50px;
-        display: flex;
-        gap: 20px;
-        z-index: 900;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      }
-      nav a {
-        text-decoration: none;
-        color: #5a4b3c;
-        font-size: 0.75rem;
-        opacity: 0.4;
-        transition: 0.3s;
-      }
-      nav a.active {
-        opacity: 1;
-        color: #6c1d1d;
-        font-weight: 600;
-      }
-
-      .petal {
-        position: fixed;
-        top: -20px;
-        background: linear-gradient(to bottom right, #ffb6c1, #ffc0cb);
-        border-radius: 150% 0 150% 0;
-        pointer-events: none;
-        z-index: 9999;
-        will-change: transform;
-        animation: fallDown linear forwards;
-      }
-
-      @keyframes fallDown {
-        0% {
-          transform: translateY(0) translateX(0) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 0.8;
-        }
-        25% {
-          transform: translateY(25vh) translateX(20px) rotate(45deg);
-        }
-        50% {
-          transform: translateY(50vh) translateX(-20px) rotate(90deg);
-        }
-        75% {
-          transform: translateY(75vh) translateX(20px) rotate(135deg);
-        }
-        100% {
-          transform: translateY(110vh) translateX(-10px) rotate(180deg);
-          opacity: 0;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .glass-card {
-          grid-template-columns: 1fr;
-          padding: 25px;
-        }
-        .gallery-grid {
-          grid-template-rows: repeat(3, 120px);
-        }
-        .img-frame {
-          height: 250px;
-        }
-        nav {
-          width: 90%;
-          justify-content: center;
-          gap: 15px;
-        }
-      }
-      .cursor {
-        display: inline-block;
-        width: 2px;
-        height: 1.2em;
-        background-color: #6c1d1d;
-        margin-left: 2px;
-        vertical-align: middle;
-        animation: blink 0.7s infinite;
-      }
-
-      @keyframes blink {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0;
-        }
-      }
-      #secret-trigger {
-        margin-top: 50px;
-        display: inline-block;
-        font-size: 0.65rem;
-        color: #5a4b3c;
-        opacity: 0.3;
-        letter-spacing: 4px;
-        cursor: pointer;
-        position: relative;
-        transition: all 0.8s ease;
-        font-weight: 300;
-        animation: softBreath 4s infinite ease-in-out;
-      }
-
-      #secret-trigger::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 1px;
-        bottom: -5px;
-        left: 50%;
-        background: #6c1d1d;
-        transition: all 0.5s ease;
-        transform: translateX(-50%);
-      }
-
-      #secret-trigger:hover {
-        opacity: 1 !important;
-        color: #6c1d1d;
-        text-shadow: 0 0 10px rgba(108, 29, 29, 0.2);
-      }
-      #secret-trigger:hover::after {
-        width: 40%;
-      }
-
-      @keyframes softBreath {
-        0% {
-          opacity: 0.2;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.4;
-          transform: scale(1.02);
-        }
-        100% {
-          opacity: 0.2;
-          transform: scale(1);
-        }
-      }
-
-      @keyframes shake {
-        0%,
-        100% {
-          transform: translateX(0);
-        }
-        10%,
-        30%,
-        50%,
-        70%,
-        90% {
-          transform: translateX(-5px);
-        }
-        20%,
-        40%,
-        60%,
-        80% {
-          transform: translateX(5px);
-        }
-      }
-
-      .shake-animation {
-        display: inline-block;
-        animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-        color: #ff4d4d !important;
-        opacity: 1 !important;
-      }
-
-      body {
-        cursor:
-          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="font-size:18px"><text y="18">❤️</text></svg>'),
-          auto;
-      }
-
-      button,
-      a,
-      .nav-link,
-      #secret-trigger,
-      .gallery-item {
-        cursor: pointer;
-      }
-
-      .chat-container-card {
-        position: relative;
-        padding: 0 !important;
-        overflow: hidden;
-        height: 600px;
-        display: block !important;
-        border: none !important;
-      }
-
-      .chat-bg-img {
-        width: 100%;
-        height: 100%;
-      }
-      .chat-bg-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .chat-overlay-white {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        z-index: 10;
-      }
-
-      .chat-box-compact {
-        padding: 25px 35px;
-        position: relative;
-      }
-      .chat-role {
-        display: block;
-        font-size: 0.65rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: #6c1d1d;
-        font-weight: 800;
-        margin-bottom: 8px;
-      }
-      .chat-text {
-        font-family: "Playfair Display", serif;
-        font-size: 1.1rem;
-        color: #444;
-        line-height: 1.5;
-        margin: 0;
-      }
-      .click-indicator {
-        position: absolute;
-        bottom: 8px;
-        right: 20px;
-        font-size: 0.55rem;
-        color: #999;
-        font-style: italic;
-      }
-
-      @media (max-width: 768px) {
-        .chat-container-card {
-          height: 500px;
-        }
-        .chat-overlay-white {
-          width: 95%;
-          bottom: 10px;
-        }
-        .chat-text {
-          font-size: 0.95rem;
-        }
-      }
-
-      .intro-subtext,
-      .intro-whisper {
-        font-style: italic;
-        opacity: 0;
-        margin-bottom: 10px;
-        animation: fadeInUp 1.5s ease forwards;
-      }
-
-      .intro-whisper {
-        margin-bottom: 30px;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(15px);
-        }
-        to {
-          opacity: 0.7;
-          transform: translateY(0);
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section id="intro" class="intro-page">
-      <div class="intro-container">
-        <div class="intro-content">
-          <img
-            src="img/gerbera-removebg-preview.png"
-            alt="Icon"
-            class="intro-img"
-            onerror="this.src = 'https://via.placeholder.com/200?text=❤️'"
-          />
-          <h2>Dinda</h2>
-          <p style="font-style: italic; opacity: 0.7; margin-bottom: 30px"></p>
-          <p class="intro-subtext">
-            Ada sepucuk surat untukmu di hari spesial ini.
-          </p>
 
-          <p class="intro-whisper">
-            Yang mungkin tidak pernah sempat aku ucapkan dengan suara.
-          </p>
-          <button id="open-btn" class="btn">BUKA DISINI</button>
-        </div>
-      </div>
-    </section>
+    <!-- Cute Corner Animations -->
+    <div class="corner-decor top-left">✨</div>
+    <div class="corner-decor top-right">🕊️</div>
+    <div class="corner-decor bottom-left">🍂</div>
+    <div class="corner-decor bottom-right">⭐</div>
 
-    <div class="main-content" id="main">
-      <section id="home">
-        <div class="glass-card">
-          <div class="text-area">
-            <h2>Hari ini,<br />milikmu.</h2>
-            <p>
-              Biarkan dunia mengalah sejenak. Hari ini tidak ada tuntutan, tidak
-              ada kebisingan yang berarti, kecuali namamu yang dirayakan.
-            </p>
-            <button class="btn" id="play-music" style="margin-top: 20px">
-              Matikan Musik
-            </button>
-          </div>
-          <div class="img-frame">
-            <img
-              src="img/foto1.png"
-              alt="Dinda"
-              onerror="this.src = 'https://via.placeholder.com/400?text=Foto+1'"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section id="memories">
-        <div class="glass-card chat-container-card">
-          <div class="chat-bg-img">
-            <img src="img/foto-masakecil.png" alt="Dinda Memories" />
-          </div>
-          <div class="chat-overlay-white" onclick="nextDialogue()">
-            <div class="chat-box-compact">
-              <div id="chat-content" style="transition: all 0.4s ease">
-                <span class="chat-role" id="role-name">Dinda Kecil</span>
-                <p class="chat-text" id="dialogue-text">
-                  "Kak, apakah dunia dewasa semenakutkan yang aku bayangkan?"
-                </p>
-              </div>
-              <div class="click-indicator">Klik untuk lanjut...</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="gallery">
-        <div class="glass-card" style="grid-template-columns: 1fr">
-          <h2 style="text-align: center; font-size: 1.8rem">Sudut Cerita</h2>
-          <div class="gallery-grid">
-            <div class="gallery-item"><img src="img/foto3.png" /></div>
-            <div class="gallery-item"><img src="img/foto5.png" /></div>
-            <div class="gallery-item"><img src="img/foto6.png" /></div>
-            <div class="gallery-item"><img src="img/sunset.jpg" /></div>
-            <div class="gallery-item"><img src="img/foto4.png" /></div>
-            <div class="gallery-item"><img src="img/foto7.png" /></div>
-            <div class="gallery-item"><img src="img/foto9.png" /></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="wish">
-        <div
-          class="glass-card"
-          style="
-            grid-template-columns: 1fr;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 25px;
-            max-width: 700px;
-            margin: 0 auto;
-          "
-        >
-          <div id="day-counter-wrapper" style="width: 100%">
-            <h3
-              style="
-                font-size: 1rem;
-                opacity: 0.7;
-                font-weight: 400;
-                margin-bottom: 5px;
-              "
-            >
-              Tepat hari ini,
-            </h3>
-            <div
-              id="day-number"
-              style="
-                font-size: 3.5rem;
-                font-weight: 700;
-                color: #6c1d1d;
-                font-family: &quot;Playfair Display&quot;, serif;
-                line-height: 1.2;
-              "
-            >
-              0
-            </div>
-            <h3
-              style="
-                font-size: 1rem;
-                opacity: 0.7;
-                font-weight: 400;
-                margin-top: 5px;
-              "
-            >
-              hari, kamu telah menyinari dunia.
-            </h3>
-          </div>
-
-          <div
-            style="
-              width: 100%;
-              margin-top: 30px;
-              display: flex;
-              justify-content: center;
-            "
-          >
-            <p
-              id="typing-text"
-              style="
-                font-family: &quot;Playfair Display&quot;, serif;
-                font-size: 1.3rem;
-                font-style: italic;
-                color: #5a4b3c;
-                line-height: 1.8;
-                min-height: 180px;
-                text-align: center;
-                width: 100%;
-                max-width: 550px;
-              "
-            ></p>
-          </div>
-
-          <div
-            style="
-              margin-top: 40px;
-              border-top: 1px dashed rgba(108, 29, 29, 0.1);
-              padding-top: 30px;
-              width: 100%;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-            "
-          >
-            <span
-              id="secret-trigger"
-              style="display: block; width: fit-content; margin-bottom: 10px"
-            >
-              S E C R E T
-            </span>
-
-            <p
-              id="secret-message"
-              style="
-                display: none;
-                margin: 15px 0;
-                font-family: &quot;Playfair Display&quot;, serif;
-                color: #6c1d1d;
-                font-weight: bold;
-                text-align: center;
-              "
-            ></p>
-
-            <div
-              style="
-                margin-top: 20px;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-              "
-            >
-              <button
-                id="write-wish-btn"
-                class="btn"
-                style="font-size: 0.8rem; padding: 12px 30px"
-              >
-                Tulis Harapanmu
-              </button>
-
-              <div
-                id="wish-input-container"
-                style="display: none; margin-top: 20px; width: 100%"
-              >
-                <form
-                  id="my-form"
-                  style="
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    width: 100%;
-                  "
-                >
-                  <textarea
-                    name="Harapan_Dinda"
-                    id="dinda-wish-input"
-                    placeholder="Tulis harapanmu di sini..."
-                    style="
-                      width: 90%;
-                      max-width: 400px;
-                      height: 100px;
-                      padding: 15px;
-                      border-radius: 20px;
-                      border: 1px solid #6c1d1d;
-                      background: rgba(255, 255, 255, 0.9);
-                      font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
-                      outline: none;
-                      resize: none;
-                      text-align: center;
-                    "
-                  ></textarea>
-                  <button
-                    type="submit"
-                    id="save-wish-btn"
-                    class="btn"
-                    style="margin-top: 15px; font-size: 0.75rem"
-                  >
-                    Simpan di Hati
-                  </button>
-                </form>
-              </div>
-
-              <p
-                id="display-dinda-wish"
-                style="
-                  margin-top: 25px;
-                  font-family: &quot;Playfair Display&quot;, serif;
-                  font-style: italic;
-                  color: #6c1d1d;
-                  font-size: 1.2rem;
-                  display: none;
-                  line-height: 1.6;
-                  text-align: center;
-                "
-              ></p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <nav>
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#memories" class="nav-link">Tumbuh</a>
-        <a href="#gallery" class="nav-link">Gallery</a>
-        <a href="#wish" class="nav-link">Wish</a>
-      </nav>
-    </div>
-
-    <div class="bg-decor">
-      <div class="item-decor">🌸</div>
-      <div class="item-decor">🧸</div>
-      <div class="item-decor">🌼</div>
-      <div class="item-decor">❤️</div>
-      <div class="item-decor">🌺</div>
-      <div class="item-decor">🌷</div>
-      <div class="item-decor">🌟</div>
-      <div class="item-decor">🌍</div>
-    </div>
-
+    <!-- Audio BGM & SFX -->
     <audio id="bgm" loop src="About You - The 1975 Instrumental.mp3"></audio>
+    <audio id="sfx-open" src="Letter - Sound Effect SFX-[AudioTrimmer.com].mp3"></audio>
 
-    <script>
-      const openBtn = document.getElementById("open-btn");
-      const intro = document.getElementById("intro");
-      const main = document.getElementById("main");
-      const audio = document.getElementById("bgm");
+    <div id="intro">
+      <div class="envelope-wrapper">
+        <div class="envelope-bottom-flap"></div>
+        <div class="envelope-top-flap"></div>
+        
+        <img src="img/gerbera-removebg-preview.png" alt="Dinda" class="intro-circle" onerror="this.src = 'https://via.placeholder.com/150?text=Dinda'" />
+        <h1 class="intro-title serif">Dinda</h1>
+      </div>
+      
+      <div class="click-instruction">Klik amplop untuk membuka</div>
+    </div>
 
-      openBtn.addEventListener("click", () => {
-        intro.classList.add("hidden");
-        main.classList.add("visible");
-        audio.play().catch(() => console.log("Musik aktif"));
-        startPetals();
-        document.body.style.overflow = "hidden";
-        main.focus();
-      });
+    <div class="main-container" id="main">
+      <nav>
+        <a href="#home" class="active">Pesan</a>
+        <a href="#memories">Tumbuh</a>
+        <a href="#gallery">Kenangan</a>
+        <a href="#wish">Akhir</a>
+      </nav>
 
-      document
-        .getElementById("play-music")
-        .addEventListener("click", function () {
-          if (audio.paused) {
-            audio.play();
-            this.textContent = "Matikan Musik";
-          } else {
-            audio.pause();
-            this.textContent = "Nyalakan Musik";
-          }
-        });
+      <!-- Section: Home -->
+      <section id="home">
+        <div class="content-wrapper">
+          <div class="text-col">
+            <h2 class="section-title">Hari ini, dan hari esokmu.</h2>
+            <p class="section-text">
+              Terima kasih sudah pernah mengizinkanku menetap sebentar di hidupmu. Hari ini adalah hari bahagiamu, dan esok adalah awal perjalanan barumu. Aku memilih merayakanmu satu kali lagi, sebelum kita benar-benar harus berjalan ke arah yang berbeda.
+            </p>
+            <p class="section-text" style="font-weight: bold; color: var(--sunset-dark);">
+              Selamat bertambah usia. Berbahagialah di setiap langkah yang kamu pilih.
+            </p>
+            <button class="btn-elegant" id="music-toggle" style="padding: 10px 20px; font-size: 0.7rem; margin-top: 10px;">Musik: ON</button>
+          </div>
+          <div class="img-col">
+            <img src="img/foto1.png" alt="Dinda" onerror="this.src = 'https://via.placeholder.com/500x600?text=Foto+1'" />
+          </div>
+        </div>
+      </section>
 
-      function createPetal() {
-        const petal = document.createElement("div");
-        petal.classList.add("petal");
-        petal.style.left = Math.random() * 100 + "vw";
-        const size = Math.random() * 12 + 8 + "px";
-        petal.style.width = size;
-        petal.style.height = size;
-        const duration = Math.random() * 5 + 5;
-        petal.style.animationDuration = duration + "s";
-        petal.style.opacity = Math.random() * 0.6 + 0.2;
-        document.body.appendChild(petal);
-        setTimeout(() => {
-          petal.remove();
-        }, duration * 1000);
-      }
+      <!-- Section: Memories (Dialog) -->
+      <section id="memories">
+        <div class="content-wrapper" style="flex-direction: row-reverse;">
+          <div class="text-col">
+            <h2 class="section-title">Percakapan yang Tertinggal</h2>
+            <p class="section-text">Ada masa di mana kita berjalan berdampingan, dan ada masa di mana kita harus saling melepaskan.</p>
+            <div class="dialogue-box" id="dialogue-container">
+              <div class="dialogue-role" id="d-role">Dinda Kecil</div>
+              <div class="dialogue-text" id="d-text">"Kak, apakah dunia dewasa semenakutkan yang aku bayangkan?"</div>
+              <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 1rem; font-family: 'Montserrat', sans-serif;">(Klik kotak ini untuk melanjutkan percakapan)</p>
+            </div>
+          </div>
+          <div class="img-col">
+            <img src="img/foto-masakecil.png" alt="Masa Kecil" onerror="this.src = 'https://via.placeholder.com/500x500?text=Masa+Kecil'" />
+          </div>
+        </div>
+      </section>
 
-      function startPetals() {
-        setInterval(createPetal, 800);
-      }
+      <!-- Section: Gallery -->
+      <section id="gallery" style="flex-direction: column;">
+        <h2 class="section-title" style="margin-bottom: 3rem; text-align: center;">Jejak yang Tersimpan</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="img/foto3.png" onerror="this.src='https://via.placeholder.com/300x400?text=Foto'"/></div>
+          <div class="gallery-item"><img src="img/foto5.png" onerror="this.src='https://via.placeholder.com/300x400?text=Foto'"/></div>
+          <div class="gallery-item"><img src="img/foto6.png" onerror="this.src='https://via.placeholder.com/300x400?text=Foto'"/></div>
+          <div class="gallery-item"><img src="img/foto4.png" onerror="this.src='https://via.placeholder.com/300x400?text=Foto'"/></div>
+        </div>
+      </section>
 
-      const sections = document.querySelectorAll("section");
-      const navLinks = document.querySelectorAll(".nav-link");
+      <!-- Section: Wish -->
+      <section id="wish">
+        <h3 class="serif" style="font-size: 1.5rem; color: var(--sunset-dark);">Sejak hari itu,</h3>
+        <div class="day-counter serif" id="day-counter">0</div>
+        <h3 class="serif" style="font-size: 1.5rem; color: var(--sunset-dark); margin-bottom: 2rem;">hari yang telah terlewati.</h3>
+        
+        <div class="poem">
+          <p>
+            Empat tahun adalah waktu yang aneh<br>
+            Cukup lama untuk membuat seseorang percaya<br>
+            bahwa beberapa kenangan akan tinggal selamanya,<br>
+            dan cukup singkat untuk membuktikan<br>
+            bahwa semuanya tetap bisa hilang begitu saja.
+          </p>
+          <p>
+            Aku pernah mengenal seseorang<br>
+            yang di mataku terasa seperti sesuatu<br>
+            yang tidak mungkin ditemukan dua kali.<br>
+            Bukan karena ia tidak memiliki luka,<br>
+            atau hidup tanpa cela,<br>
+            tetapi karena caraku memandangnya<br>
+            membuat semua retaknya terlihat indah.<br>
+            Aku menyebutnya Anindita.
+          </p>
+          <p>
+            Dan sejak saat itu,<br>
+            aku hidup terlalu lama di dalam ingatan.<br>
+            Seribu empat ratus enam puluh hari<br>
+            aku mengarsipkan hal-hal kecil tentangnya<br>
+            cara tawanya memecah sunyi,<br>
+            cara matanya membuat dunia terasa lebih tenang,<br>
+            dan bagaimana kehadirannya perlahan<br>
+            mengubah banyak hal di dalam diriku<br>
+            tanpa pernah ia sadari.
+          </p>
+          <p>
+            Lucunya, manusia selalu berpikir<br>
+            bahwa kehilangan datang secara tiba-tiba.<br>
+            Padahal tidak.
+          </p>
+          <p>
+            Ia datang perlahan,<br>
+            masuk lewat percakapan yang mulai pendek,<br>
+            lewat perhatian yang berubah asing,<br>
+            lewat jarak yang diam-diam tumbuh<br>
+            di antara dua orang<br>
+            yang dulu saling menjadi rumah.<br>
+            Dan ketika semuanya benar-benar selesai,<br>
+            yang tersisa hanyalah kebiasaan<br>
+            untuk mengenang seseorang<br>
+            yang sudah tidak lagi kembali.
+          </p>
+          <p>
+            Aku pikir waktu akan membuatku lupa.
+          </p>
+          <p>
+            Namun semakin dewasa,<br>
+            aku justru mengerti satu hal<br>
+            beberapa orang tidak hadir<br>
+            untuk dimiliki selamanya.<br>
+            Mereka hanya datang<br>
+            untuk mengubah cara kita melihat dunia,<br>
+            lalu pergi setelah tugasnya selesai.<br>
+            Mungkin itu sebabnya<br>
+            aku masih menulis tentangnya malam ini.<br>
+            Bukan karena aku belum rela,<br>
+            tetapi karena ada bagian dari diriku<br>
+            yang akan selalu menganggapnya<br>
+            sebagai hal paling indah<br>
+            yang pernah singgah dalam hidupku.<br>
+            Dan mungkin,<br>
+            itulah arti sebenarnya dari Anindita.
+          </p>
+        </div>
 
-      main.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          if (main.scrollTop >= sectionTop - sectionHeight / 3) {
-            current = section.getAttribute("id");
-          }
-        });
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href").slice(1) === current) {
-            link.classList.add("active");
-          }
-        });
-      });
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
+          <span id="secret-trigger">S E C R E T</span>
+          <p id="secret-message" style="display: none;"></p>
+        </div>
 
-      let lastSpark = 0;
-      document.addEventListener("mousemove", function (e) {
-        const now = Date.now();
-        if (now - lastSpark < 100) return; // hanya 1 tiap 100ms
-        lastSpark = now;
+        <div class="wish-form">
+          <form id="wish-form-submit">
+            <input type="text" name="Harapan_Terakhir" style="display:none;" value="Balasan" />
+            <textarea id="wish-input" class="wish-input" placeholder="Tuliskan kata terakhirmu jika ada yang ingin disampaikan..." rows="2" required></textarea>
+            <button type="submit" class="btn-elegant">Tutup & Simpan</button>
+          </form>
+          <p id="wish-response" style="display: none; margin-top: 2rem; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--sunset-dark); font-style: italic;"></p>
+        </div>
+      </section>
+    </div>
 
-        const spark = document.createElement("div");
-        spark.innerHTML = "❤️";
-        spark.style.position = "fixed";
-        spark.style.left = e.clientX + "px";
-        spark.style.top = e.clientY + "px";
-        spark.style.fontSize = Math.random() * 10 + 12 + "px";
-        spark.style.pointerEvents = "none";
-        spark.style.zIndex = "100000";
-        spark.style.opacity = "0.8";
-        spark.style.transition = "all 0.8s ease";
-        document.body.appendChild(spark);
-
-        setTimeout(() => {
-          spark.style.transform = `translateY(-60px) scale(0.5)`;
-          spark.style.opacity = "0";
-        }, 50);
-
-        setTimeout(() => {
-          spark.remove();
-        }, 800);
-      });
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("is-visible");
-          });
-        },
-        { threshold: 0.2 },
-      );
-
-      document
-        .querySelectorAll(".glass-card")
-        .forEach((card) => observer.observe(card));
-
-      const birthDate = new Date("2005-03-22");
-      const message =
-        "Selamat menginjak usia dua puluh satu, Dinda. Aku tahu, di usia ini hidup belum rapi, dan memang belum seharusnya. Kamu mungkin masih ragu, masih salah langkah, masih bertanya ke diri sendiri lebih sering daripada menemukan jawaban. Tapi justru di situlah kamu sedang benar-benar tumbuh. Kamu tidak lagi hanya mencari siapa dirimu, kamu sedang membentuknya, dengan pilihan-pilihan kecil, dengan keberanian mencoba, dengan jatuh yang kadang kamu simpan sendiri. Aku berharap, setiap langkahmu tetap punya arah, meski harus melewati kebingungan lebih dulu, dan semoga setiap lelahmu selalu punya tempat untuk pulang. Di usia ini, kamu bukan karakter sampingan dalam hidupmu sendiri. Kamu penulisnya yang terkadang salah memilih kata, mencoret kalimat, lalu menulis ulang. Tidak apa-apa, cerita yang jujur memang jarang rapi sejak awal. Semoga halaman-halaman berikutnya diisi tawa yang lahir dari syukur, mimpi yang perlahan berani kamu kejar, dan bahagia yang tidak selalu sempurna, tapi sungguh kamu rasakan. Teruslah berjalan dengan caramu sendiri, kalau lelah, berhenti sejenak bukan untuk menyerah, tapi untuk mengingat bahwa kamu tidak harus kuat sendirian. Selamat Ulang Tahun DND";
-      let hasStarted = false;
-
-      function calculateDays() {
-        const today = new Date();
-        return Math.ceil(Math.abs(today - birthDate) / (1000 * 60 * 60 * 24));
-      }
-
-      function typeWriter(text, i) {
-        if (i < text.length) {
-          document.getElementById("typing-text").innerHTML =
-            text.substring(0, i + 1) + '<span class="cursor"></span>';
-          setTimeout(() => typeWriter(text, i + 1), 50);
-        }
-      }
-
-      function animateValue(obj, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-          if (!startTimestamp) startTimestamp = timestamp;
-          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-          obj.innerHTML = Math.floor(
-            progress * (end - start) + start,
-          ).toLocaleString("id-ID");
-          if (progress < 1) window.requestAnimationFrame(step);
-          else typeWriter(message, 0);
-        };
-        window.requestAnimationFrame(step);
-      }
-
-      const wishObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && !hasStarted) {
-              hasStarted = true;
-              animateValue(
-                document.getElementById("day-number"),
-                0,
-                calculateDays(),
-                2000,
-              );
-            }
-          });
-        },
-        { threshold: 0.5 },
-      );
-      wishObserver.observe(document.getElementById("wish"));
-
-      const secretBtn = document.getElementById("secret-trigger");
-      secretBtn.addEventListener("click", function () {
-        const passwordInput = prompt(
-          "Passwordnya ada di blogger dengan gambar yang sama pada halaman awal sebelum membuka surat, password terletak di judul..selamat mencari yaa! (Hint: ada angka dan jenis bunga di dalamnya) :)",
-        );
-        if (
-          passwordInput &&
-          passwordInput.toLowerCase() === "3 tangkai gerbera"
-        ) {
-          this.style.display = "none";
-          const msg = document.getElementById("secret-message");
-          msg.innerHTML = "Some moments are indeed destined to be remembered❤️";
-          msg.style.display = "block";
-          alert("Yay! Passwordnya benar, selamat menginjak 21 din!");
-        } else if (passwordInput !== null) {
-          this.classList.add("shake-animation");
-          setTimeout(() => {
-            this.classList.remove("shake-animation");
-            alert("Yah, salah, coba cari lagi yaa!");
-          }, 500);
-        }
-      });
-
-      const form = document.getElementById("my-form");
-      if (form) {
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-          const wishValue = document.getElementById("dinda-wish-input").value;
-          if (!wishValue.trim()) return alert("Tulis dulu ya..");
-          const saveBtn = document.getElementById("save-wish-btn");
-          saveBtn.innerText = "Mengirim...";
-          fetch("https://formspree.io/f/mnjvojev", {
-            method: "POST",
-            body: new FormData(event.target),
-            headers: { Accept: "application/json" },
-          }).then((response) => {
-            if (response.ok) {
-              document.getElementById("wish-input-container").style.display =
-                "none";
-              const display = document.getElementById("display-dinda-wish");
-              display.innerHTML = `“${wishValue}”<br><small>— Tersimpan di semesta.</small>`;
-              display.style.display = "block";
-            }
-          });
-        });
-      }
-
-      document
-        .getElementById("write-wish-btn")
-        .addEventListener("click", function () {
-          document.getElementById("wish-input-container").style.display =
-            "block";
-          this.style.display = "none";
-        });
-
-      const dialogues = [
-        {
-          role: "Dinda Mungil",
-          text: '"Kak, apakah dunia dewasa semenakutkan yang aku bayangkan?"',
-        },
-        {
-          role: "Dinda ",
-          text: '"Kadang-kadang. Tapi jangan takut, kita punya banyak keberanian yang belum kamu tahu sekarang."',
-        },
-        {
-          role: "Dinda Mungil",
-          text: '"Apakah kita masih suka melihat bintang dan bermimpi yang tinggi?"',
-        },
-        {
-          role: "Dinda ",
-          text: '"Tentu. Hanya saja sekarang, kita bukan cuma melihatnya, kita sedang belajar cara menjangkaunya satu per satu."',
-        },
-        {
-          role: "Dinda Mungil",
-          text: '"Aku bangga padamu, Kak. Terima kasih sudah tidak menyerah."',
-        },
-        {
-          role: "Dinda ",
-          text: '"Terima kasih sudah tumbuh sehebat ini, Dinda kecilku."',
-        },
-      ];
-      let currentIdx = 0;
-      function nextDialogue() {
-        currentIdx = (currentIdx + 1) % dialogues.length;
-        const content = document.getElementById("chat-content");
-        content.style.opacity = "0";
-        setTimeout(() => {
-          document.getElementById("role-name").innerText =
-            dialogues[currentIdx].role;
-          document.getElementById("dialogue-text").innerText =
-            dialogues[currentIdx].text;
-          content.style.opacity = "1";
-        }, 300);
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
