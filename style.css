@@ -511,14 +511,83 @@ nav a:hover, nav a.active {
 }
 
 @media (max-width: 768px) {
+  /* Layout adjustments */
   .content-wrapper {
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
   }
-  .intro-title { font-size: 3.5rem; }
-  .section-title { font-size: 2.8rem; }
-  section { padding: 4rem 5%; }
-  nav { width: 90%; justify-content: center; gap: 1rem; padding: 12px 20px; }
-  .day-counter { font-size: 5rem; }
+  
+  /* Envelope resizing for smaller screens */
+  .envelope-wrapper {
+    transform: scale(0.85);
+  }
+  #intro:not(.intro-opening) .envelope-wrapper:hover {
+    transform: scale(0.85) translateY(-5px);
+  }
+
+  /* Typography */
+  .intro-title { font-size: 3rem; }
+  .section-title { font-size: 2.5rem; text-align: center; }
+  .section-text { font-size: 1.05rem; text-align: center; }
+  .poem { font-size: 1.15rem; }
+  .day-counter { font-size: 4.5rem; }
   .dialogue-text { font-size: 1.3rem; }
+  
+  /* Section padding */
+  section { padding: 4rem 6%; }
+  
+  /* Dialogue box */
+  .dialogue-box {
+    padding: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+    border-left: none;
+    border-top: 3px solid var(--sunset-medium);
+    border-radius: 15px;
+  }
+  
+  /* Navigation */
+  nav { 
+    width: 92%; 
+    justify-content: space-around; 
+    gap: 0.5rem; 
+    padding: 12px 15px; 
+    bottom: 25px;
+  }
+  nav a { font-size: 0.75rem; letter-spacing: 0px; }
+  
+  /* Gallery - Keep it 2 columns on mobile for aesthetics */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  /* Corner Decor */
+  .corner-decor { font-size: 1.5rem; }
+  
+  /* Wish Form */
+  .wish-form {
+    padding: 25px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Smaller phones */
+  .envelope-wrapper {
+    transform: scale(0.75);
+  }
+  #intro:not(.intro-opening) .envelope-wrapper:hover {
+    transform: scale(0.75) translateY(-5px);
+  }
+  
+  .intro-title { font-size: 2.5rem; }
+  .section-title { font-size: 2rem; }
+  .day-counter { font-size: 3.5rem; }
+  
+  nav { 
+    width: 96%;
+    padding: 12px 10px; 
+    bottom: 20px;
+  }
+  nav a { font-size: 0.65rem; }
 }
